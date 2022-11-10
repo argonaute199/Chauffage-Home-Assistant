@@ -1,6 +1,6 @@
 blueprint:
   name: Pilotage chauffage
-  description: Gestion des différents modes de chauffage - Stop  Hors-gel  Auto confort Auto eco 
+  description: Gestion des différents modes de chauffage - Arret  Hors-gel  Manuel  Absence  Presence
   domain: automation
 
   input:
@@ -16,15 +16,15 @@ blueprint:
       selector:
         entity:
           domain: input_select
-    entity_schedule_confort:
-      name: Schedule mode confort
-      description: Entité générée par schedule pour la planification du mode confort (switch)
+    entity_schedule_presence:
+      name: Schedule mode presence
+      description: Entité générée par schedule pour la planification du mode presence (switch)
       selector:
         entity:
           domain: switch
-    entity_schedule_eco:
-      name: Schedule mode eco
-      description: Entité générée par schedule pour la planification du mode eco (switch)
+    entity_schedule_abscence:
+      name: Schedule mode absence
+      description: Entité générée par schedule pour la planification du mode absence (switch)
       selector:
         entity:
           domain: switch
@@ -36,11 +36,11 @@ blueprint:
           domain: automation
 
 
-# Température pour le hors gel
+# Température pour le Hors-gel
 variables:
   temperature_hg: 10
 
-alias: Pilotage chauffage bureau Patrick
+alias: Pilotage salon
 description: ''
 trigger:
   - platform: state
@@ -48,11 +48,11 @@ trigger:
 condition: []
 action:
   - choose:
-      # ----- Mode Stop
+      # ----- Mode Arret
       - conditions:
           - condition: state
             entity_id: !input entity_mode
-            state: Stop
+            state: Arret
         sequence:
           - service: input_number.set_value
             data:
@@ -62,8 +62,8 @@ action:
           - service: switch.turn_off
             target:
               entity_id:
-                - !input entity_schedule_eco
-                - !input entity_schedule_confort
+                - !input entity_schedule_abscence
+                - !input entity_schedule_presence
           - service: automation.turn_off
             target:
               entity_id: !input entity_thermostat_tpi
@@ -84,34 +84,29 @@ action:
           - service: switch.turn_off
             target:
               entity_id:
-                - !input entity_schedule_eco
-                - !input entity_schedule_confort
-      # ----- Mode Auto - confort
+                - !input entity_schedule_abscence
+                - !input entity_schedule_presence
+      # ----- Mode Presence
       - conditions:
           - condition: state
             entity_id: !input entity_mode
-            state: Auto - confort
+            state: Presence
         sequence:
           - service: automation.turn_on
             target:
               entity_id: !input entity_thermostat_tpi
           - service: switch.turn_on
             target:
-              entity_id: !input entity_schedule_confort
+              entity_id: !input entity_schedule_presence
           - service: switch.turn_off
             target:
               entity_id:
-                - !input entity_schedule_eco
-      # ----- Mode Auto - eco ou absent
+                - !input entity_schedule_abscence
+      # ----- Mode Absence
       - conditions:
-          - condition: or
-            conditions:
-              - condition: state
-                entity_id: !input entity_mode
-                state: 'Auto - eco'
-              - condition: state
-                entity_id: !input entity_mode
-                state: 'Absent'
+          - condition: state
+            entity_id: !input entity_mode
+            state: 'Absence'
         sequence:
           - service: automation.turn_on
             target:
@@ -119,17 +114,17 @@ action:
           - service: switch.turn_off
             target:
               entity_id:
-                - !input entity_schedule_confort
+                - !input entity_schedule_presence
           - service: switch.turn_on
             target:
-              entity_id: !input entity_schedule_eco
-    # ----- Mode manuel
+              entity_id: !input entity_schedule_absence
+    # ----- Mode Manuel
     default:
       - service: switch.turn_off
         target:
           entity_id:
-            - !input entity_schedule_eco
-            - !input entity_schedule_confort
+            - !input entity_schedule_absence
+            - !input entity_schedule_presence
       - service: automation.turn_on
         target:
           entity_id: !input entity_thermostat_tpi
