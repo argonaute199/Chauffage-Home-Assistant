@@ -18,13 +18,14 @@ blueprint:
           domain: input_select
     entity_schedule_presence:
       name: Schedule mode presence
-      description: Entité générée par schedule pour la planification du mode presence (switch)
+      description: Entité(s) générée(s) par Scheduler pour la planification du mode presence (switch)
       selector:
         entity:
           domain: switch
+          multiple: true
     entity_schedule_abscence:
       name: Schedule mode absence
-      description: Entité générée par schedule pour la planification du mode absence (switch)
+      description: Entité générée par Scheduler pour la planification du mode absence (switch)
       selector:
         entity:
           domain: switch
