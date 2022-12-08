@@ -1,8 +1,16 @@
 Forks here:
 
-. Presence-Absence (default, this one): with different mode names, and single Absence mode, and 'radiateur' switch name instead of 'chauffage' [ProdOk]
+. Presence-Absence (default, this one): [ProdOk]
 
-. Week-Vs-WE (this one): based on Presence-Absence, support multiple schedules for Presence mode (ex Week & Weekend) [WorkInProgress]
+    - based on Argonaute version
+    - different mode names (Presence-Absence, instead of AutoConfort-AutoEco)
+    - single Absence mode
+    - 'radiateur' switch name instead of 'chauffage'
+
+. Week-Vs-WE: [WorkInProgress]
+
+    - based on Presence-Absence version
+    - support multiple schedules for Presence mode (ex Week & Weekend)
 
 Thanks Argonaute for this beautiful work and tuto!
 
