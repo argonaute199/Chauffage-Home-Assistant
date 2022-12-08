@@ -1,10 +1,13 @@
-. main : with different mode names, and single Absence mode
+Forks here:
 
-. branch : with 2 different program for the Presence mode, Weekdays Vs Weekend
+. Presence-Absence (default): with different mode names, and single Absence mode [ProdOk]
 
-Thanks Argonaute for this beautiful work and tuto!!
+. Week-Vs-WE (this one): support for multiple schedules for the Presence mode (ex Weekdays & Weekend) [WorkInProgress]
 
-############################################## ORIGINAL README ################
+Thanks Argonaute for this beautiful work and tuto!
+
+############################################## ORIGINAL README ##########################
+
 Home Assistant - Gestion de bout en bout du chauffage
 
 This repository contains the files of a post in HACF french forum.
