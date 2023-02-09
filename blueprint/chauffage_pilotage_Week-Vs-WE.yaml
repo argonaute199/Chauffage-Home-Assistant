@@ -37,9 +37,9 @@ blueprint:
           domain: automation
 
 
-# Température pour le Hors-gel
 variables:
-  temperature_hg: 10
+  temperature_hg: 10   # Température pour le Hors-gel
+  switcheslist_presence: !input entity_schedule_presence   # Pour essayer d'agir d'un coup sur de multiples Schedules Presence si existent
 
 alias: Pilotage salon
 description: ''
@@ -60,11 +60,13 @@ action:
               value: 0
             target:
               entity_id: !input entity_consigne
+
           - service: switch.turn_off
             target:
               entity_id:
                 - !input entity_schedule_absence
-                - !input entity_schedule_presence
+                - '{{ expand(switcheslist_presence) | selectattr("entity_id", "!=", trigger.entity_id) | map(attribute="entity_id") | list }}'
+
           - service: automation.turn_off
             target:
               entity_id: !input entity_thermostat_tpi
@@ -86,7 +88,7 @@ action:
             target:
               entity_id:
                 - !input entity_schedule_absence
-                - !input entity_schedule_presence
+                - !input '{{entity_schedule_presence}}'
       # ----- Mode Presence
       - conditions:
           - condition: state
