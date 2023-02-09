@@ -1,5 +1,5 @@
 blueprint:
-  name: Pilotage chauffage beta 10
+  name: Pilotage chauffage beta 11
   description: Gestion des différents modes de chauffage - Arret  Hors-gel  Manuel  Absence  Presence
   domain: automation
 
