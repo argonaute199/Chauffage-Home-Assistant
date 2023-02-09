@@ -88,7 +88,7 @@ action:
             target:
               entity_id:
                 - !input entity_schedule_absence
-                - !input '{{entity_schedule_presence}}'
+                - !input '{{switcheslist_presence}}'
       # ----- Mode Presence
       - conditions:
           - condition: state
