@@ -1,5 +1,5 @@
 blueprint:
-  name: Pilotage chauffage - Week-VS-WE - beta 13
+  name: Pilotage chauffage - Week-VS-WE - beta 14
   description: Gestion des différents modes de chauffage - Arret  Hors-gel  Manuel  Absence  Presence
   domain: automation
 
