@@ -11,20 +11,20 @@ blueprint:
         entity:
           domain: input_number
     entity_mode:
-      name: Sélection du mode
+      name: Sélection du Mode
       description: Entité de gestion du mode de gestion du chauffage (input_select)
       selector:
         entity:
           domain: input_select
     entity_schedule_presence:
-      name: Schedule mode presence
+      name: Schedule mode Presence
       description: Entité(s) générée(s) par Scheduler pour la planification du mode Presence (switch)
       selector:
         entity:
           domain: switch
           multiple: true
     entity_schedule_absence:
-      name: Schedule mode absence
+      name: Schedule mode Absence
       description: Entité générée par Scheduler pour la planification du mode Absence (switch)
       selector:
         entity:
