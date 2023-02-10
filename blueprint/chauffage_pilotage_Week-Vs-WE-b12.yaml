@@ -1,5 +1,5 @@
 blueprint:
-  name: Pilotage chauffage beta 11
+  name: Pilotage chauffage beta 12
   description: Gestion des différents modes de chauffage - Arret  Hors-gel  Manuel  Absence  Presence
   domain: automation
 
@@ -41,7 +41,7 @@ variables:
   # Température pour le Hors-gel
   temperature_hg: 10
   # Pour essayer d'agir d'un coup sur de multiples Schedules Presence si existent
-  switcheslist_presence: !input entity_schedule_presence
+  #switcheslist_presence: !input entity_schedule_presence
 
 alias: Pilotage salon
 description: ''
@@ -68,7 +68,7 @@ action:
               entity_id: !input entity_schedule_absence
           - service: switch.turn_off
             target:
-              entity_id: '{{ expand(switcheslist_presence) | selectattr("entity_id", "!=", trigger.entity_id) | map(attribute="entity_id") | list }}'
+              entity_id: !input entity_schedule_presence   #'{{ expand(switcheslist_presence) | selectattr("entity_id", "!=", trigger.entity_id) | map(attribute="entity_id") | list }}'
               
           - service: automation.turn_off
             target:
@@ -94,7 +94,8 @@ action:
               entity_id: !input entity_schedule_absence
           - service: switch.turn_off
             target:
-              entity_id: '{{ expand(switcheslist_presence) | selectattr("entity_id", "!=", trigger.entity_id) | map(attribute="entity_id") | list }}'
+              entity_id: !input entity_schedule_presence
+              #entity_id: '{{ expand(switcheslist_presence) | selectattr("entity_id", "!=", trigger.entity_id) | map(attribute="entity_id") | list }}'
               
       # ----- Mode Presence
       - conditions:
@@ -123,7 +124,8 @@ action:
               entity_id: !input entity_thermostat_tpi
           - service: switch.turn_off
             target:
-              entity_id: '{{ expand(switcheslist_presence) | selectattr("entity_id", "!=", trigger.entity_id) | map(attribute="entity_id") | list }}'
+              entity_id: !input entity_schedule_presence
+              #entity_id: '{{ expand(switcheslist_presence) | selectattr("entity_id", "!=", trigger.entity_id) | map(attribute="entity_id") | list }}'
           - service: switch.turn_on
             target:
               entity_id: !input entity_schedule_absence
@@ -134,7 +136,8 @@ action:
           entity_id: !input entity_schedule_absence
       - service: switch.turn_off
         target:
-          entity_id: '{{ expand(switcheslist_presence) | selectattr("entity_id", "!=", trigger.entity_id) | map(attribute="entity_id") | list }}'
+          entity_id: !input entity_schedule_presence
+          #entity_id: '{{ expand(switcheslist_presence) | selectattr("entity_id", "!=", trigger.entity_id) | map(attribute="entity_id") | list }}'
       - service: automation.turn_on
         target:
           entity_id: !input entity_thermostat_tpi
