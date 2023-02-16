@@ -22,27 +22,27 @@ blueprint:
           step: 0.001
     entity_consigne:
       name: Consigne
-      description: Champ d'entrée de la température de consigne (input number)
+      description: Champ d'entrée de la température de Consigne (input number)
       selector:
         entity:
           domain: input_number
     entity_temp_ext:
       name: Température extérieure
-      description: Sonde de mesure de la température extérieure (sensor)
+      description: Sonde de mesure de la Température Extérieure (sensor)
       selector:
         entity:
           domain: sensor
           device_class: temperature
     entity_temp_int:
       name: Température intérieure
-      description: Sonde de mesure de la température intérieure (sensor)
+      description: Sonde de mesure de la Température Intérieure (sensor)
       selector:
         entity:
           domain: sensor
           device_class: temperature
     entity_fenetre:
       name: Fenêtre
-      description: Capteur d'ouverture de fenêtre (sensor)
+      description: Capteur(s) d'ouverture de fenêtre (sensor)
       selector:
         entity:
           domain: binary_sensor
@@ -50,7 +50,7 @@ blueprint:
           multiple: true
     entity_puissance:
       name: Puissance
-      description: Champ d'affichage de la puissance (input_number)
+      description: Champ d'affichage de la Puissance (input_number)
       selector:
         entity:
           domain: input_number
