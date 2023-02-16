@@ -1,12 +1,12 @@
 blueprint:
-  name: Thermostat TPI b2
+  name: Thermostat TPI b3
   description: Thermostat TPI (Time Propertional & Integral)
   domain: automation
 
   input:
     coeff_c:
       name: Coefficient C
-      description: coefficient multiplicateur de la différence entre la consigne et la température intérieure pour le calcul de la puissance (0.6 conseillé) - [ Explications dispos : coeff_c - puissance du chauffage Vs surface pièce - Plus il est haut, moins le chauffage est puissant pour la pièce -> équivalent P : à augmenter si la chauffe n'est pas assez rapide pour cette pièce, à baisser si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint (overshoot, par exemple si chauffage à forte inertie, ou si coef_c réglé bcp trop haut), ou encore qu'on obtient des oscillations à température stable ] 
+      description: coefficient multiplicateur de la différence entre la consigne et la température intérieure pour le calcul de la puissance (0.6 conseillé) - Explications dispos : coeff_c - puissance du chauffage Vs surface pièce - Plus il est haut, moins le chauffage est puissant pour la pièce -> équivalent P : à augmenter si la chauffe n'est pas assez rapide pour cette pièce, à baisser si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint (overshoot, par exemple si chauffage à forte inertie, ou si coef_c réglé bcp trop haut), ou encore qu'on obtient des oscillations à température stable
       selector:
         number:
           min: 0.0
@@ -14,7 +14,7 @@ blueprint:
           step: 0.01
     coeff_t:
       name: Coefficient T
-      description: coefficient multiplicateur de la différence entre la consigne et la température extérieure pour le calcul de la puissance (0.01 conseillé) - [ Explications dispos : coeff_t - isolation de la pièce - Plus il est haut, moins bien la pièce est isolée -> équivalent I : à augmenter si on est en-dessous de la consigne quand le chaufffage est stable, à baisser si consigne dépassée ]
+      description: coefficient multiplicateur de la différence entre la consigne et la température extérieure pour le calcul de la puissance (0.01 conseillé) - Explications dispos : coeff_t - isolation de la pièce - Plus il est haut, moins bien la pièce est isolée -> équivalent I : à augmenter si on est en-dessous de la consigne quand le chaufffage est stable, à baisser si consigne dépassée
       selector:
         number:
           min: 0.0
