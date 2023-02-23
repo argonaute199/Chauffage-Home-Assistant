@@ -1,5 +1,5 @@
 blueprint:
-  name: Thermostat TPI b5
+  name: Thermostat TPI b6
   description: Thermostat TPI (Time Propertional & Integral)
   domain: automation
 
@@ -47,7 +47,6 @@ blueprint:
         entity:
           domain: binary_sensor
           device_class: opening
-          multiple: true
     entity_puissance:
       name: Puissance
       description: Champ d'affichage de la Puissance (input_number)
