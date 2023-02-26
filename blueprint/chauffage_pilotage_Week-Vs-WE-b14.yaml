@@ -25,7 +25,7 @@ blueprint:
           multiple: true
     entity_schedule_absence:
       name: Schedule mode Absence
-      description: Entité générée par Scheduler pour la planification du mode Absence (switch)
+      description: Entité(s) générée(s) par Scheduler pour la planification du mode Absence (switch)
       selector:
         entity:
           domain: switch
