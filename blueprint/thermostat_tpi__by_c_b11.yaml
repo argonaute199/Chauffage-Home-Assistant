@@ -1,80 +1,123 @@
 blueprint:
-  name: Thermostat TPI by C. - beta 10
+  name: Thermostat TPI by C. - beta 11
   description: "Fork du :
+  
     **Thermostat TPI (Time Propertional & Integral)**
+    
     par **Argonaute**
+    
     [original et infos ici](https://forum.hacf.fr/t/gestion-de-bout-en-bout-du-chauffage/4897)
                 
     ___
                 
     L’objectif du thermostat est de calculer un coefficient de puissance de chauffe valant de 0 à 100 en fonction d’une consigne donnée,
+    
     de la température intérieure et de la température extérieure. Nous l’appellerons juste « puissance » pour simplifier.
+    
 
-    '- Puissance = 100% : le convecteur chauffe en permanence'
-    '- Puissance = 50% : le convecteur chauffe la moitié du temps'
-    '- Puissance = 0% : le convecteur ne chauffe plus'
+    - Puissance = 100% : le convecteur chauffe en permanence
+    
+    - Puissance = 50% : le convecteur chauffe la moitié du temps
+    
+    - Puissance = 0% : le convecteur ne chauffe plus
+
 
     La puissance doit être de 100% quand la température de la pièce est loin de la consigne, puis baisser doucement jusqu’à atteindre la consigne.
+    
     Ensuite le radiateur doit rester légèrement tiède pour compenser les pertes thermiques, ce en fonction de la température extérieure.
+    
 
     Le calcul de la puissance est assuré par la formule :
+    
 
     `Puissance = coeff_c * (T consigne - T intérieure) + coeff_t * (T consigne - T extérieure)`
 
+
     avec un min a 0% et un max a 100%
 
-    '- coeff_c est un paramètre qui dépend de la puissance du chauffage et de la surface'
 
-    '- coeff_t est un paramètre qui dépend lui de l’isolation de la pièce et des pertes thermiques'
+    - coeff_c est un paramètre qui dépend de la puissance du chauffage et de la surface
+
+    - coeff_t est un paramètre qui dépend lui de l’isolation de la pièce et des pertes thermiques
+    
 
     Pour une installation standard aux normes on a coeff_c = 0,6 et coeff_t = 0,01
+    
 
     Exemple : Tint = 19°C Text = 10°C et consigne a 20°C alors puissance = 70%
+    
 
     Le fait de considérer la température extérieure est donc indispensable pour compenser les pertes de chaleur et garder une température
+    
     très constante, ce qui n’est pas assuré par le thermostat standard de HA.
+    
 
     Ensuite il faut transformer la puissance calculée en une séquence de ON-OFF de notre chauffage.
+    
 
     L’implémentation proposée ici est pour des convecteurs avec un fil pilote (Qubino).
+    
     Mais une adaptation est possible pour d’autres types de chauffage.
+    
 
     Pour nos convecteurs, la puissance nécessaire est recalculé toutes les 10 min, ce qui donne le temps de marche sur la période.
+    
     Avec une puissance calculé de 70 %, le convecteur sera alors sur ON 7 min puis sur OFF 3 min.
+    
 
     La périodicité dépend de l’inertie : 30 min à 1 heure pour une chaudière, 10min pour un convecteur on/off (fil pilote).
+    
     Pour un poêle à granule, la puissance devrait être recalculée toutes les 30min par exemple.
+    
 
     Le thermostat prend en charge la fenêtre et il coupe le radiateur quand cette dernière est ouverte.
+    
+    
     ___
                 
-    # Commentaires Ciscoo45 :
+    ## Commentaires Ciscoo45 :
+    
                 
     Thermostat principalement proportionnel, accompagné de deux coefficients, fixés dans la config :
+    
                 
-    `## Puissance = coeff_c * (Tconsigne - Tintérieure) + coeff_t * (Tconsigne - Textérieure)`
-                
+    ` Puissance = coeff_c * (Tconsigne - Tintérieure) + coeff_t * (Tconsigne - Textérieure)`
+    
+    
     avec :
+    
     . **coeff_c** dépend de la puissance du chauffage par rapport à la surface
+    
     . **coeff_t** dépend de l’isolation de la pièce et des pertes thermiques
+    
     pour une installation standard aux normes, on a coeff_c = **0,6** et coeff_t = **0,01**
-                
+    
+    
     Exemple : avec Tint = 19°C, Text = 10°C et une consigne à 20°C, alors Puissance = 70%
-                
+    
+    
     ___
-                
+    
+    
     # Evolutions par Ciscoo45 :
-                
+    
+    
     Thermostat TPI :
-    '- évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de coeff_c et coeff_t
-                
+    
+    - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de coeff_c et coeff_t
+    
+    
     ___
+    
                 
     # Note :
-                
+    
+    
     Ce thermostat est principalement fait pour être activé/désactivé et piloté par un second BluePrint nommé Pilotage Chauffage,
-    qui permet l'utilisation de différents modes de chauffage (Presence, Absence, Manuel, Hors-gel, Arret) et des programmations horaires."
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b10.yaml
+    
+    qui permet l'utilisation de différents modes de chauffage (Presence, Absence, Manuel, Hors-gel, Arret) et des programmations horaires.
+    "
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b11.yaml
   domain: automation
 
   input:
