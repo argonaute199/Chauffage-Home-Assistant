@@ -1,5 +1,5 @@
 blueprint:
-  name: Thermostat TPI by C. - beta 16
+  name: Thermostat TPI by C. - beta 17
   description: "
     ___
     
@@ -131,7 +131,7 @@ blueprint:
     
     qui permet l'utilisation de différents modes de chauffage (Presence, Absence, Manuel, Hors-gel, Arret) et des programmations horaires.
     "
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b16.yaml
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b17.yaml
   domain: automation
 
   input:
@@ -139,9 +139,8 @@ blueprint:
       name: Coefficient C
       description: "coefficient multiplicateur de la différence entre la consigne et la température intérieure pour le calcul de la puissance
       
-        > valeur par défaut conseillée : **`0,6`** (bâti aux normes)
+        valeur par défaut conseillée : **`0,6`** (bâti aux normes)
         
-        ___
         
         Explications dispos :
         
@@ -149,17 +148,18 @@ blueprint:
         
         - plus il est haut, moins le chauffage est puissant pour la pièce
         
-        - **en pratique** (est équivalent à P sur thermostat PID) :
         
-        > . à **augmenter** si la chauffe n'est pas assez rapide pour cette pièce
+        **En pratique** (est équivalent à P sur thermostat PID) :
+        
+        . à **augmenter** si la chauffe n'est pas assez rapide pour cette pièce
              
-        > . à **baisser** si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint :
+        . à **baisser** si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint :
              
-        >       - overshoot, par exemple si chauffage à forte inertie
+            - overshoot, par exemple si chauffage à forte inertie
              
-        >       - ou si coeff_c est réglé beaucoup trop haut
+            - ou si coeff_c est réglé beaucoup trop haut
              
-        > . à **baisser** aussi si on obtient des oscillations à température stable"
+        . à **baisser** aussi si on obtient des oscillations à température stable"
       selector:
         number:
           min: 0.0
