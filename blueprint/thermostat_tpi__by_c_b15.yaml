@@ -127,7 +127,7 @@ blueprint:
     ## Note :
     
     
-    Ce thermostat est principalement fait pour être activé/désactivé et piloté par un second BluePrint nommé Pilotage Chauffage,
+    Ce thermostat est principalement fait pour être activé/désactivé, puis sa Tconsigne pilotée par un second BluePrint nommé Pilotage Chauffage,
     
     qui permet l'utilisation de différents modes de chauffage (Presence, Absence, Manuel, Hors-gel, Arret) et des programmations horaires.
     "
