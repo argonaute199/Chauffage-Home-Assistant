@@ -1,5 +1,5 @@
 blueprint:
-  name: Thermostat TPI by C. - beta 12
+  name: Thermostat TPI by C. - beta 14
   description: "
     ___
     
@@ -124,7 +124,7 @@ blueprint:
     
     qui permet l'utilisation de différents modes de chauffage (Presence, Absence, Manuel, Hors-gel, Arret) et des programmations horaires.
     "
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b12.yaml
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b14.yaml
   domain: automation
 
   input:
@@ -136,23 +136,23 @@ blueprint:
         
         ___
         
-        ## Explications dispos
+        Explications dispos :
         
-        - le coeff_c représente ## la puissance du chauffage Vs la surface de la pièce
+        - le coeff_c représente **la puissance du chauffage Vs la surface de la pièce**
         
         - plus il est haut, moins le chauffage est puissant pour la pièce
         
-        - en pratique est équivalent à P sur thermostat PDI :
+        - **en pratique** (est équivalent à P sur thermostat PID) :
         
-            > à augmenter si la chauffe n'est pas assez rapide pour cette pièce
+            > à **augmenter** si la chauffe n'est pas assez rapide pour cette pièce
              
-            > à baisser si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint :
+            > à **baisser** si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint :
              
             >       - overshoot, par exemple si chauffage à forte inertie
              
             >       - ou si coeff_c est réglé beaucoup trop haut
              
-            > à baisser aussi si on obtient des oscillations à température stable"
+            > à **baisser** aussi si on obtient des oscillations à température stable"
       selector:
         number:
           min: 0.0
@@ -166,17 +166,17 @@ blueprint:
         
         ___
         
-        ## Explications dispos
+        Explications dispos :
         
-        - le coeff_t représente ## l'isolation de la pièce et son inertie
+        - le coeff_t représente **l'isolation de la pièce et son inertie**
         
         - plus il est haut, moins bien la pièce est isolée, son inertie est faible
         
-        - en pratique comportement proche de I sur thermostat PDI :
+        - **en pratique** (comportement proche de I sur thermostat PID) :
         
-            > à augmenter si on est en-dessous de la consigne quand le chaufffage est stable
+            > à **augmenter** si on est en-dessous de la consigne quand le chaufffage est stable
         
-            > à baisser si la consigne est dépassée"
+            > à **baisser** si la consigne est dépassée"
       selector:
         number:
           min: 0.0
