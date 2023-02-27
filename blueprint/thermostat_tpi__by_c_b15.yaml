@@ -92,7 +92,7 @@ blueprint:
     - à l'isolation et l'inertie de la pièce
     
     
-    Formule :
+    Pas d'apprentissage mais une formule simple, efficace et approuvée :
     
                 
     ` Puissance = coeff_c * (Tconsigne - Tintérieure) + coeff_t * (Tconsigne - Textérieure)`
