@@ -1,5 +1,5 @@
 blueprint:
-  name: Thermostat TPI b6
+  name: Thermostat TPI b7
   description: Thermostat TPI (Time Propertional & Integral)
   domain: automation
 
@@ -41,7 +41,7 @@ blueprint:
           domain: sensor
           device_class: temperature
     entity_fenetre:
-      name: Fenêtre
+      name: Fenêtre(s)
       description: (groupe de) Capteur(s) d'ouverture de fenêtre (binary sensor)
       selector:
         entity:
