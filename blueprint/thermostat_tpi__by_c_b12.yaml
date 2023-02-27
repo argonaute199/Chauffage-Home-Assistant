@@ -1,12 +1,15 @@
 blueprint:
-  name: Thermostat TPI by C. - beta 11
-  description: "Fork du :
+  name: Thermostat TPI by C. - beta 12
+  description: "
+    ___
+    
+    Fork du :
   
     **Thermostat TPI (Time Propertional & Integral)**
     
-    par **Argonaute**
+    par **Argonaute** (12/2021)
     
-    [original et infos ici](https://forum.hacf.fr/t/gestion-de-bout-en-bout-du-chauffage/4897)
+    [original et infos ici : Gestion de bout-en-bout du chauffage sur HACF.fr](https://forum.hacf.fr/t/gestion-de-bout-en-bout-du-chauffage/4897)
                 
     ___
                 
@@ -33,18 +36,18 @@ blueprint:
     `Puissance = coeff_c * (T consigne - T intérieure) + coeff_t * (T consigne - T extérieure)`
 
 
-    avec un min a 0% et un max a 100%
+    avec un min à 0% et un max à 100%
 
 
-    - coeff_c est un paramètre qui dépend de la puissance du chauffage et de la surface
+    - coeff_c dépend de la puissance du chauffage et de la surface
 
-    - coeff_t est un paramètre qui dépend lui de l’isolation de la pièce et des pertes thermiques
+    - coeff_t dépend de l’isolation de la pièce et des pertes thermiques
     
 
     Pour une installation standard aux normes on a coeff_c = 0,6 et coeff_t = 0,01
     
 
-    Exemple : Tint = 19°C Text = 10°C et consigne a 20°C alors puissance = 70%
+    Exemple : Tint = 19°C Text = 10°C et consigne à 20°C alors puissance = 70%
     
 
     Le fait de considérer la température extérieure est donc indispensable pour compenser les pertes de chaleur et garder une température
@@ -60,12 +63,12 @@ blueprint:
     Mais une adaptation est possible pour d’autres types de chauffage.
     
 
-    Pour nos convecteurs, la puissance nécessaire est recalculé toutes les 10 min, ce qui donne le temps de marche sur la période.
+    Pour nos convecteurs, la puissance nécessaire est recalculée toutes les 10min, ce qui donne le temps de marche sur la période.
     
-    Avec une puissance calculé de 70 %, le convecteur sera alors sur ON 7 min puis sur OFF 3 min.
+    Avec une puissance calculée de 70%, le convecteur sera alors sur ON 7min puis sur OFF 3min.
     
 
-    La périodicité dépend de l’inertie : 30 min à 1 heure pour une chaudière, 10min pour un convecteur on/off (fil pilote).
+    La périodicité dépend de l’inertie : 30min à 1 heure pour une chaudière, 10min pour un convecteur on/off (fil pilote).
     
     Pour un poêle à granule, la puissance devrait être recalculée toutes les 30min par exemple.
     
@@ -117,24 +120,35 @@ blueprint:
     
     qui permet l'utilisation de différents modes de chauffage (Presence, Absence, Manuel, Hors-gel, Arret) et des programmations horaires.
     "
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b11.yaml
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b12.yaml
   domain: automation
 
   input:
     coeff_c:
       name: Coefficient C
       description: "coefficient multiplicateur de la différence entre la consigne et la température intérieure pour le calcul de la puissance
-        > valeur par défaut conseillée : `**0,6**` (bâti aux normes)
+      
+        > valeur par défaut conseillée : **`0,6`** (bâti aux normes)
+        
         ___
+        
         # Explications dispos :
-        '- le coeff_c représente ## la puissance du chauffage Vs la surface de la pièce'
-        '- plus il est haut, moins le chauffage est puissant pour la pièce'
-        '- en pratique est équivalent à P sur thermostat PDI :
-             > à augmenter si la chauffe n'est pas assez rapide pour cette pièce
-             > à baisser si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint :
-             >       '- overshoot, par exemple si chauffage à forte inertie'
-             >       '- ou si coeff_c est réglé beaucoup trop haut'
-             > à baisser aussi si on obtient des oscillations à température stable"
+        
+        - le coeff_c représente ## la puissance du chauffage Vs la surface de la pièce
+        
+        - plus il est haut, moins le chauffage est puissant pour la pièce
+        
+        - en pratique est équivalent à P sur thermostat PDI :
+        
+            > à augmenter si la chauffe n'est pas assez rapide pour cette pièce
+             
+            > à baisser si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint :
+             
+            >       - overshoot, par exemple si chauffage à forte inertie
+             
+            >       - ou si coeff_c est réglé beaucoup trop haut
+             
+            > à baisser aussi si on obtient des oscillations à température stable"
       selector:
         number:
           min: 0.0
@@ -143,14 +157,22 @@ blueprint:
     coeff_t:
       name: Coefficient T
       description: "coefficient multiplicateur de la différence entre la consigne et la température extérieure pour le calcul de la puissance
-        > valeur par défaut conseillée : `**0,01**` (bâti aux normes)
+      
+        > valeur par défaut conseillée : **`0,01`** (bâti aux normes)
+        
         ___
+        
         # Explications dispos :
-        '- le coeff_t représente ## l'isolation de la pièce et son inertie'
-        '- plus il est haut, moins bien la pièce est isolée, son inertie est faible'
-        '- en pratique comportement proche de I sur thermostat PDI :'
-              > à augmenter si on est en-dessous de la consigne quand le chaufffage est stable
-              > à baisser si la consigne est dépassée"
+        
+        - le coeff_t représente ## l'isolation de la pièce et son inertie
+        
+        - plus il est haut, moins bien la pièce est isolée, son inertie est faible
+        
+        - en pratique comportement proche de I sur thermostat PDI :
+        
+            > à augmenter si on est en-dessous de la consigne quand le chaufffage est stable
+        
+            > à baisser si la consigne est dépassée"
       selector:
         number:
           min: 0.0
