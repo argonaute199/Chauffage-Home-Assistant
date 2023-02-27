@@ -3,7 +3,9 @@ blueprint:
   description: "
     ___
     
-    Fork du :
+    ## Fork
+    
+    de :
   
     **Thermostat TPI (Time Propertional & Integral)**
     
@@ -12,6 +14,8 @@ blueprint:
     original et infos ici : [Gestion de bout-en-bout du chauffage sur HACF.fr](https://forum.hacf.fr/t/gestion-de-bout-en-bout-du-chauffage/4897)
                 
     ___
+    
+    ## Description Argonaute
                 
     L’objectif du thermostat est de calculer un coefficient de puissance de chauffe valant de 0 à 100 en fonction d’une consigne donnée,
     
@@ -78,7 +82,7 @@ blueprint:
     
     ___
                 
-    ## Commentaires Ciscoo45 :
+    ## Commentaires Ciscoo45
     
                 
     Thermostat principalement proportionnel, accompagné de deux coefficients, fixés dans la config :
@@ -102,7 +106,7 @@ blueprint:
     ___
     
     
-    # Evolutions par Ciscoo45 :
+    ## Evolutions par Ciscoo45
     
     
     Thermostat TPI :
@@ -113,7 +117,7 @@ blueprint:
     ___
     
                 
-    # Note :
+    ## Note :
     
     
     Ce thermostat est principalement fait pour être activé/désactivé et piloté par un second BluePrint nommé Pilotage Chauffage,
@@ -132,7 +136,7 @@ blueprint:
         
         ___
         
-        # Explications dispos :
+        ## Explications dispos
         
         - le coeff_c représente ## la puissance du chauffage Vs la surface de la pièce
         
@@ -162,7 +166,7 @@ blueprint:
         
         ___
         
-        # Explications dispos :
+        ## Explications dispos
         
         - le coeff_t représente ## l'isolation de la pièce et son inertie
         
