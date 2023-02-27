@@ -85,7 +85,7 @@ blueprint:
     ## Commentaires Ciscoo45
     
                 
-    Thermostat principalement proportionnel, accompagné de deux coefficients, fixés dans la config et permettant d'adapter la chauffe :
+    Thermostat principalement proportionnel, prenant en compte la température extérieure, accompagné de deux coefficients, fixés dans la config et permettant d'adapter la chauffe :
     
     - à la taile du chauffage pour la pièce
     
