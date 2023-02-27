@@ -151,15 +151,15 @@ blueprint:
         
         **En pratique** (est équivalent à P sur thermostat PID) :
         
-        . à **augmenter** si la chauffe n'est pas assez rapide pour cette pièce
+        - à **augmenter** si la chauffe n'est pas assez rapide pour cette pièce
              
-        . à **baisser** si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint :
+        - à **baisser** si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint :
              
-            - overshoot, par exemple si chauffage à forte inertie
+              . overshoot, par exemple si chauffage à forte inertie
              
-            - ou si coeff_c est réglé beaucoup trop haut
+              . ou si coeff_c est réglé beaucoup trop haut
              
-        . à **baisser** aussi si on obtient des oscillations à température stable"
+        - à **baisser** aussi si on obtient des oscillations à température stable"
       selector:
         number:
           min: 0.0
