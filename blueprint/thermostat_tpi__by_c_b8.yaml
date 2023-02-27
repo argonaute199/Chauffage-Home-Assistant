@@ -1,0 +1,218 @@
+blueprint:
+  name: Thermostat TPI by C. - beta 8
+  description: 'Fork du :
+                **Thermostat TPI (Time Propertional & Integral)**
+                par **Argonaute**
+                original ici : [Link](https://forum.hacf.fr/t/gestion-de-bout-en-bout-du-chauffage/4897)
+                
+                ___
+                
+                L’objectif du thermostat est de calculer un coefficient de puissance de chauffe valant de 0 à 100 en fonction d’une consigne donnée,
+                de la température intérieure et de la température extérieure. Nous l’appellerons juste « puissance » pour simplifier.
+
+                - Puissance = 100% : le convecteur chauffe en permanence
+                - Puissance = 50% : le convecteur chauffe la moitié du temps
+                - Puissance = 0% : le convecteur ne chauffe plus
+
+                La puissance doit être de 100% quand la température de la pièce est loin de la consigne, puis baisser doucement jusqu’à atteindre la consigne.
+                Ensuite le radiateur doit rester légèrement tiède pour compenser les pertes thermiques, ce en fonction de la température extérieure.
+
+                Le calcul de la puissance est assuré par la formule :
+
+                `Puissance = coeff_c * (T consigne - T intérieure) + coeff_t * (T consigne - T extérieure)`
+
+                avec un min a 0% et un max a 100%
+
+                - coeff_c est un paramètre qui dépend de la puissance du chauffage et de la surface.
+
+                - coeff_t est un paramètre qui dépend lui de l’isolation de la pièce et des pertes thermiques.
+
+                Pour une installation standard aux normes on a coeff_c = 0,6 et coeff_t = 0,01
+
+                Exemple : Tint = 19°C Text = 10°C et consigne a 20°C alors puissance = 70%
+
+                Le fait de considérer la température extérieure est donc indispensable pour compenser les pertes de chaleur et garder une température
+                très constante, ce qui n’est pas assuré par le thermostat standard de HA.
+
+                Ensuite il faut transformer la puissance calculée en une séquence de ON-OFF de notre chauffage.
+
+                L’implémentation proposée ici est pour des convecteurs avec un fil pilote (Qubino).
+                Mais une adaptation est possible pour d’autres types de chauffage.
+
+                Pour nos convecteurs, la puissance nécessaire est recalculé toutes les 10 min, ce qui donne le temps de marche sur la période.
+                Avec une puissance calculé de 70 %, le convecteur sera alors sur ON 7 min puis sur OFF 3 min.
+
+                La périodicité dépend de l’inertie : 30 min à 1 heure pour une chaudière, 10min pour un convecteur on/off (fil pilote).
+                Pour un poêle à granule, la puissance devrait être recalculée toutes les 30min par exemple.
+
+                Le thermostat prend en charge la fenêtre et il coupe le radiateur quand cette dernière est ouverte.
+                ___
+                
+                # Commentaires Ciscoo45 :
+                
+                Thermostat principalement proportionnel, accompagné de deux coefficients, fixés dans la config :
+                
+                `## Puissance = coeff_c * (Tconsigne - Tintérieure) + coeff_t * (Tconsigne - Textérieure)`
+                
+                avec :
+                . **coeff_c** dépend de la puissance du chauffage par rapport à la surface
+                . **coeff_t** dépend de l’isolation de la pièce et des pertes thermiques
+                pour une installation standard aux normes, on a coeff_c = **0,6** et coeff_t = **0,01**
+                
+                Exemple : avec Tint = 19°C, Text = 10°C et une consigne à 20°C, alors Puissance = 70%
+                
+                ___
+                
+                # Evolutions par Ciscoo45 :
+                
+                Thermostat TPI :
+                - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de coeff_c et coeff_t
+                
+                ___
+                
+                # Note :
+                
+                Ce thermostat est principalement fait pour être activé/désactivé et piloté par un second BluePrint, Pilotage Chauffage,
+                qui permet l'utilisation de différents modes de chauffage (Presence, Absence, Manuel, Hors-gel, Arret) et des programmations horaires.
+                '
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b8.yaml
+  domain: automation
+
+  input:
+    coeff_c:
+      name: Coefficient C
+      description: 'coefficient multiplicateur de la différence entre la consigne et la température intérieure pour le calcul de la puissance
+                   > valeur par défaut conseillée : `**0,6**` (bâti aux normes)
+                   ___
+                   # Explications dispos :
+                   - le coeff_c représente ## la puissance du chauffage Vs la surface de la pièce
+                   - plus il est haut, moins le chauffage est puissant pour la pièce
+                   - en pratique est équivalent à P sur thermostat PDI :
+                         > à augmenter si la chauffe n'est pas assez rapide pour cette pièce
+                         > à baisser si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint :
+                         >       - overshoot, par exemple si chauffage à forte inertie
+                         >       - ou si coeff_c est réglé beaucoup trop haut
+                         > à baisser aussi si on obtient des oscillations à température stable'
+      selector:
+        number:
+          min: 0.0
+          max: 1.0
+          step: 0.01
+    coeff_t:
+      name: Coefficient T
+      description: 'coefficient multiplicateur de la différence entre la consigne et la température extérieure pour le calcul de la puissance
+                    > valeur par défaut conseillée : `**0,01**` (bâti aux normes)
+                    ___
+                    # Explications dispos :
+                    - le coeff_t représente ## l'isolation de la pièce et son inertie
+                    - plus il est haut, moins bien la pièce est isolée, son inertie est faible
+                    - en pratique comportement proche de I sur thermostat PDI :
+                         > à augmenter si on est en-dessous de la consigne quand le chaufffage est stable
+                         > à baisser si la consigne est dépassée'
+      selector:
+        number:
+          min: 0.0
+          max: 0.1
+          step: 0.001
+    entity_consigne:
+      name: Consigne
+      description: Champ d'entrée de la température de Consigne (input number)
+      selector:
+        entity:
+          domain: input_number
+    entity_temp_ext:
+      name: Température extérieure
+      description: Sonde de mesure de la Température Extérieure (sensor)
+      selector:
+        entity:
+          domain: sensor
+          device_class: temperature
+    entity_temp_int:
+      name: Température intérieure
+      description: Sonde de mesure de la Température Intérieure (sensor)
+      selector:
+        entity:
+          domain: sensor
+          device_class: temperature
+    entity_fenetre:
+      name: Fenêtre(s)
+      description: (groupe de) Capteur(s) d'ouverture de fenêtre(s) (binary sensor)
+      selector:
+        entity:
+          domain: binary_sensor
+          device_class: opening
+    entity_puissance:
+      name: Puissance
+      description: Champ d'affichage de la Puissance (input_number)
+      selector:
+        entity:
+          domain: input_number
+    entity_chauffage:
+      name: Chauffage
+      description: Interrupteur marche / arrêt du chauffage (switch)
+      selector:
+        entity:
+          domain: switch
+
+# Récupération des paramètres
+variables:
+  coeff_c: !input coeff_c
+  coeff_t: !input coeff_t
+  entity_temp_int: !input entity_temp_int
+  entity_temp_ext: !input entity_temp_ext
+  entity_fenetre: !input entity_fenetre
+
+trigger:
+  - platform: time_pattern
+    minutes: "/10"
+  - platform: state
+    entity_id: !input entity_consigne
+  - platform: state
+    entity_id: !input entity_fenetre
+
+
+action:
+  - alias: récupération des données
+    variables:
+      entity_consigne: !input entity_consigne
+      consigne: "{{states(entity_consigne)}}"
+      temp_ext: '{{ states(entity_temp_ext) }}'
+      temp_int: '{{ states(entity_temp_int) }}'
+      fenetre: '{{states(entity_fenetre)}}'     
+      puissance: >-
+        {%set val = coeff_c * (consigne - temp_int) + coeff_t * (consigne -
+        temp_ext) %}  {% if val > 1 and fenetre == 'off' %} {% set val = 100 %}  {% elif val < 0 or
+        fenetre == 'on' %} {% set val = 0 %}  {% else %} {% set val = ( (val *
+        100) | round(0)) %} {% endif %} {{val}}
+      temps_chauffe: '{{ puissance * 6 }}'
+  - alias: Met à jour l'indicateur de puissance
+    service: input_number.set_value
+    target:
+      entity_id: !input entity_puissance
+    data:
+      value: '{{puissance}}'  
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: '{{puissance == 0}}'
+        sequence:
+          - service: switch.turn_off
+            target:
+              entity_id: !input entity_chauffage
+      - conditions:
+          - condition: template
+            value_template: '{{ puissance > 99}}'
+        sequence:
+          - service: switch.turn_on
+            target:
+              entity_id: !input entity_chauffage
+    default:
+      - service: switch.turn_on
+        target:
+          entity_id: !input entity_chauffage
+      - delay: '{{temps_chauffe}}'
+      - service: switch.turn_off
+        target:
+          entity_id: !input entity_chauffage
+mode: restart
+ 
