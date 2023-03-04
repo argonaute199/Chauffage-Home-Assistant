@@ -1,6 +1,7 @@
 blueprint:
-  name: Thermostat TPI by C. - beta 21
+  name: Thermostat TPI by C. - beta 22
   description: "
+    
     ___
     
     ## Fork
@@ -14,7 +15,7 @@ blueprint:
     original et infos ici : [Gestion de bout-en-bout du chauffage sur HACF.fr](https://forum.hacf.fr/t/gestion-de-bout-en-bout-du-chauffage/4897)
                 
     ___
-    
+        
     ## Description Argonaute
                 
     L’objectif du thermostat est de calculer un coefficient de puissance de chauffe valant de 0 à 100 en fonction d’une consigne donnée,
@@ -79,12 +80,10 @@ blueprint:
 
     Le thermostat prend en charge la fenêtre et il coupe le radiateur quand cette dernière est ouverte.
     
-    
     ___
-                
+        
     ## Commentaires Ciscoo45
-    
-                
+                    
     Thermostat principalement proportionnel, prenant en compte la température extérieure, accompagné de deux coefficients, fixés dans la config et permettant d'adapter la chauffe :
     
     - à la taile du chauffage pour la pièce
@@ -109,23 +108,23 @@ blueprint:
     
     Exemple : avec Tint = 19°C, Text = 10°C et une consigne à 20°C, alors Puissance = 70%
     
-    
     ___
     
-    
+    ## Pré-requis à la mise en place de ce Thermostat TPI :
+
+    . avoir créé le helper inut_number pour la consigne (voir étape 2b sur le tuto/readme du projet)
+        
+    ___
+        
     ## Evolutions par Ciscoo45
-    
-    
+        
     Thermostat TPI :
     
     - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de coeff_c et coeff_t
     
-    
     ___
-    
-                
+                    
     ## Note
-    
     
     Ce thermostat est principalement fait pour être activé/désactivé, puis sa Tconsigne pilotée par un second BluePrint nommé Pilotage Chauffage,
     
@@ -135,7 +134,7 @@ blueprint:
     
     # Paramétrage du Blueprint
     "
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b21.yaml
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b22.yaml
   domain: automation
 
   input:
