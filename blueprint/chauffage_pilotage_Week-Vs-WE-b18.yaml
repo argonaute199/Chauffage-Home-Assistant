@@ -32,16 +32,18 @@ blueprint:
     *NB : Auto-confort et Auto-eco sur Blueprint Argonaute = Presence et Absence sur Blueprint Ciscoo45*
     
     
+    
     **Description du fonctionnement - compréhension de la gestion des modes**
     
     
-    Point important : comme déjà évoqué, si par exemple on passe du mode Presence au Absence, le scheduler ajuste automatiquement la consigne en fonction de sa planification et de l’heure qu’il est. Cela permet de se passer d’un deamon dynamique comme shedy
+    Point important : comme déjà évoqué, si par exemple on passe du mode Presence au Absence, le scheduler ajuste automatiquement la consigne en fonction de sa planification et de l’heure qu’il est. Cela permet de se passer d’un deamon dynamique comme shedy.
     
     
-    Le thermostat met la consigne à 0 si la fenêtre est ouverte (sans délai), et remet la bonne valeur une fois fermée
+    Le thermostat met la consigne à 0 si la fenêtre est ouverte (sans délai), et remet la bonne valeur une fois fermée.
     
     
     Voyons maintenant chacun des modes, et comment le changement de mode active ou désactive les 3 automatisations Thermostat TPI, Presence, Absence :
+    
     
       . mode Presence :
       
@@ -109,15 +111,17 @@ blueprint:
     . **Attention** - paramétrage du blueprint : bien utiliser les nom d'entités des switchs identifiés au préalables pour les planifs, ceux créés par Scheduler
     
     
-    . à propos de la muti-programmation : [spécificité de la version modifiée par Ciscoo45 quand on utilise plusieurs programmations par exemple sur le mode Présence] :
+    . à propos de la **muti-programmation** :
     
-    Quand le mode Presence est actif et que les deux schedules Présence SEM et Présence WE sont activées (en même temps), il n'y aura pas de conflit car chacune ne programme que sa période dédiée (semaine, ou WE/fériés) grâce aux options de Scheduler (onglet Heure, réglage Jours, voir ci-dessous) :
+    [spécificité de la version modifiée par Ciscoo45 quand on utilise plusieurs programmations par exemple sur le mode Présence]
     
-    - QUOTIDIEN : planif active les 7 jours de la semaine (JOURS DE TRAVAIL + WEEKEND)
+    Quand le mode *Presence* est actif et que les deux schedules *Présence SEM* et *Présence WE* sont activées (en même temps), il n'y aura pas de conflit car chacune ne programme que sa période dédiée (semaine, ou WE/fériés) grâce aux options de Scheduler (onglet Heure, réglage Jours, voir ci-dessous) :
     
-    - JOURS DE TRAVAIL : planif active uniquement les jours de travail, en prenant ceux définis via le binary_sensor Workday, voir 4d. Par défaut lun-ven en France
+    - **QUOTIDIEN** : planif active les 7 jours de la semaine (JOURS DE TRAVAIL + WEEKEND)
     
-    - WEEKEND : planif active uniquement les WE (via Workday : sam-dim par défaut), les jours fériés, ainsi que les vacances déclarées manuellement via Workday (voir 4d)
+    - **JOURS DE TRAVAIL** : planif active uniquement les jours de travail, en prenant ceux définis via le binary_sensor **Workday**, voir 4d. Par défaut lun-ven en France
+    
+    - **WEEKEND** : planif active uniquement les WE (via Workday : sam-dim par défaut), les jours fériés, ainsi que les vacances déclarées manuellement via Workday (voir 4d)
     
     
     . Programmation horaire (schedule) - Le thermostat **n'anticipe pas** car il **n'apprend pas**
@@ -195,7 +199,7 @@ blueprint:
     - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de *coeff_c* et *coeff_t*
     
     
-    . **Autres parties du projet Gestion bout en bout du chauffage** :
+    . **autres parties du projet Gestion bout en bout du chauffage** :
     
     Ajout de documentation pas-à-pas pour compléter celle déjà rendue disponible par Argonaute et continuer autour des propositions disponibles sur le topic :
     
