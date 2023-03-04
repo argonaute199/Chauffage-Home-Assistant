@@ -1,5 +1,5 @@
 blueprint:
-  name: Thermostat TPI by C. - beta 20
+  name: Thermostat TPI by C. - beta 21
   description: "
     ___
     
@@ -135,15 +135,15 @@ blueprint:
     
     # Paramétrage du Blueprint
     "
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b20.yaml
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b21.yaml
   domain: automation
 
   input:
     coeff_c:
       name: Coefficient C
-      description: "coefficient multiplicateur de la différence entre la consigne et la température intérieure pour le calcul de la puissance
+      description: "Coefficient multiplicateur de la différence entre la consigne et la température intérieure pour le calcul de la puissance
       
-        valeur par défaut conseillée : **`0,6`** (bâti aux normes)
+        > valeur par défaut conseillée : **`0,6`** (bâti aux normes)
         
         
         **Explications** dispos :
@@ -171,7 +171,7 @@ blueprint:
           step: 0.01
     coeff_t:
       name: Coefficient T
-      description: "coefficient multiplicateur de la différence entre la consigne et la température extérieure pour le calcul de la puissance
+      description: "Coefficient multiplicateur de la différence entre la consigne et la température extérieure pour le calcul de la puissance
       
         > valeur par défaut conseillée : **`0,01`** (bâti aux normes)
         
