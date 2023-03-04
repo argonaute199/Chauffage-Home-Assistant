@@ -1,5 +1,5 @@
 blueprint:
-  name: Pilotage chauffage by C. - Semaine et WE/fériés - beta 17
+  name: Pilotage chauffage by C. - Semaine et WE/fériés - beta 18
   description: "
     
     ___
@@ -19,7 +19,7 @@ blueprint:
     ## Description (infos Argonaute, adaptées au noms utilisés dans ce fork) :
   
     
-    Gestion des différents modes de chauffage - Arret  Hors-gel  Manuel  Absence  Presence
+    **Gestion des différents modes de chauffage - Arret  Hors-gel  Manuel  Absence  Presence**
     
     
     La sélection du mode doit activer ou désactiver les 3 automatisations : le thermostat (notre premier blueprint Thermostat TPI), et les 2 automatisations créées par/avec le Scheduler) : Presence et Absence.
@@ -34,43 +34,73 @@ blueprint:
     
     **Description du fonctionnement - compréhension de la gestion des modes**
     
-    - point important : comme déjà évoqué, si par exemple on passe du mode Presence au Absence, le scheduler ajuste automatiquement la consigne en fonction de sa planification et de l’heure qu’il est. Cela permet de se passer d’un deamon dynamique comme shedy
     
-    - le thermostat met la consigne à 0 si la fenêtre est ouverte (sans délai), et remet la bonne valeur une fois fermée
+    Point important : comme déjà évoqué, si par exemple on passe du mode Presence au Absence, le scheduler ajuste automatiquement la consigne en fonction de sa planification et de l’heure qu’il est. Cela permet de se passer d’un deamon dynamique comme shedy
     
-    - voyons maintenant chacun des modes, et comment le changement de mode active ou désactive les 3 automatisations Thermostat TPI, Presence, Absence :
+    
+    Le thermostat met la consigne à 0 si la fenêtre est ouverte (sans délai), et remet la bonne valeur une fois fermée
+    
+    
+    Voyons maintenant chacun des modes, et comment le changement de mode active ou désactive les 3 automatisations Thermostat TPI, Presence, Absence :
     
       . mode Presence :
+      
         - automatisation thermostat : ON
+        
         - automatisation Présence SEM : ON
+        
         - automatisation Présence WE : ON
+        
         - automatisation Absence QUO : OFF
+        
     
       . mode Absence :
+      
         - automatisation thermostat : ON
+        
         - automatisation Présence SEM : OFF
+        
         - automatisation Présence WE : OFF
+        
         - automatisation Absence QUO : ON
+        
     
       . mode Hors-gel :
+      
         - automatisation thermostat : ON
+        
         - automatisation Présence SEM : OFF
+        
         - automatisation Présence WE : OFF
+        
         - automatisation Absence QUO : OFF
+        
         - consigne : forcée à 10°C (bon un peu plus qu’un hors gel…)
+        
     
       . mode Manuel :
+      
         - automatisation thermostat : ON
+        
         - automatisation Présence SEM : OFF
+        
         - automatisation Présence WE : OFF
+        
         - automatisation Absence QUO : OFF
+        
     
       . mode Arret :
+      
         - automatisation thermostat : OFF
+        
         - automatisation Présence SEM : OFF
+        
         - automatisation Présence WE : OFF
+        
         - automatisation Absence QUO : OFF
+        
         - consigne et puissance à 0
+        
        
     ___
         
@@ -110,13 +140,14 @@ blueprint:
     
     - capteur d'ouverture par fenêtre (peut être virtualisé si absent), à regrouper si multiples
     
+    
     Plus d'infos sur les choix possibles et le codage des sondes virtuelles dans le readme du projet.
     
     ___
     
     ## Pré-requis - dépendances externes (intégrations, services...)
     
-    Ce projet nécessite, hormis les lignes de code dispos dans la doc et les deux blueprints :
+    Ce projet nécessite, hormis les lignes de code dispos dans le readme et les deux blueprints :
     
     - intégration Scheduler
     
@@ -126,7 +157,7 @@ blueprint:
     
     ## Pré-requis - mise en place de ce blueprint Pilotage Chauffage :
     
-    voir tuto/readme du projet, avoir déjà mis en place :
+    Voir tuto/readme du projet, vous devez avoir déjà mis en place :
 
     - Etape 2 : la carte Lovelace Choix du mode de chauffage et état
 
@@ -142,9 +173,9 @@ blueprint:
     
     - évolution des champs descriptifs
     
-    - fonctionnel : suppression du mode Absence d'Argonaute (les absences sont gérées sur la planif éco, à savoir le mode *Absence* ici)
+    - fonctionnel : suppression du mode *Absence* d'Argonaute (les absences sont gérées sur la planif éco, à savoir le mode *Absence* ici)
     
-    - renommage des modes *Auto - confort* et *Auto - eco* (Argonaute), en *Presence* et *Absence* (C.) : ainsi on essaie de clarifier l'usage prévu par Argonaute, et on simplifie en ayant un seul mode Absence
+    - renommage des modes *Auto - confort* et *Auto - eco* (Argonaute), en *Presence* et *Absence* (C.) : ainsi on essaie de clarifier l'usage prévu par Argonaute, et on simplifie en ayant un seul mode *Absence*
     
     - clarification : mode *Stop* (Argonaute) renommé en mode *Arret* (mode utilisé l'été)
     
@@ -152,7 +183,7 @@ blueprint:
     
     - choix perso : les entités *chauffage* renommées en *radiateur*
     
-    - choix perso : icône mdi:target pour la consigne
+    - choix perso : icône *mdi:target* pour la consigne
     
     - **multiples programmations possibles pour le mode Presence** (ou Absence) d'une pièce : par ex. un schedule semaine et un schedule WE & férié, avec le mode Absence qui peut être aligné à 1 ou 2 degrés en-dessous
     
@@ -161,7 +192,7 @@ blueprint:
     
     . **blueprint Thermostat TPI** :
     
-    - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de coeff_c et coeff_t
+    - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de *coeff_c* et *coeff_t*
     
     
     . **Autres parties du projet Gestion bout en bout du chauffage** :
@@ -182,7 +213,7 @@ blueprint:
     
     # Paramétrage du Blueprint
     "
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/chauffage_pilotage_Week-Vs-WE-b17.yaml
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/chauffage_pilotage_Week-Vs-WE-b18.yaml
   domain: automation
 
   input:
