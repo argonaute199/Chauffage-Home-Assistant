@@ -1,5 +1,5 @@
 blueprint:
-  name: Pilotage chauffage by C. - Semaine et WE/fériés - beta 15
+  name: Pilotage chauffage by C. - Semaine et WE/fériés - beta 16
   description: "
     
     ___
@@ -26,7 +26,7 @@ blueprint:
     
     La consigne est changée pour une valeur en dure si le mode n’est pas Presence ou Abscence (planification Schedule), par exemple pour le mode manuel, le hors-gel, l'arrêt.
     
-    Pour ce faire, une dernière automatisation, codée également dans un blueprint, permet de prendre en charge cette sélection du mode par chaque radiateur : blueprint "Pilotage Chauffage". Elle prend en entrée le mode de chauffage désiré, la consigne et les 3 automatisations à piloter : thermostat TPI, Presence (multiple si besoin) et Absence (multiple possible aussi).
+    Pour ce faire, une dernière automatisation, codée également dans un blueprint, permet de prendre en charge cette sélection du mode par chaque radiateur : blueprint Pilotage Chauffage. Elle prend en entrée le mode de chauffage désiré, la consigne et les 3 automatisations à piloter : thermostat TPI, Presence (multiple si besoin) et Absence (multiple possible aussi).
     
         
     *NB : Auto-confort et Auto-eco sur Blueprint Argonaute = Presence et Absence sur Blueprint Ciscoo45*
@@ -182,7 +182,7 @@ blueprint:
     
     # Paramétrage du Blueprint
     "
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/chauffage_pilotage_Week-Vs-WE-b15.yaml
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/chauffage_pilotage_Week-Vs-WE-b16.yaml
   domain: automation
 
   input:
