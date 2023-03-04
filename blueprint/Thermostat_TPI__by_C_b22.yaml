@@ -112,7 +112,7 @@ blueprint:
     
     ## Pré-requis à la mise en place de ce Thermostat TPI :
 
-    . avoir créé le helper inut_number pour la consigne (voir étape 2b sur le tuto/readme du projet)
+    - avoir créé le helper inut_number pour la consigne (voir étape 2b sur le tuto/readme du projet)
         
     ___
         
