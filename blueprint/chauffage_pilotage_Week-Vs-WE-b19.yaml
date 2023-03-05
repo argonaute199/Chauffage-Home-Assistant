@@ -149,7 +149,7 @@ blueprint:
     
     ___
     
-    ## Pré-requis - dépendances externes (intégrations, services...)
+    ## Pré-requis - dépendances externes (intégrations, cartes, services...)
     
     Ce projet nécessite, hormis les lignes de code dispos dans le readme et les deux blueprints :
     
