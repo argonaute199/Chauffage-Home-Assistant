@@ -1,5 +1,5 @@
 blueprint:
-  name: Thermostat TPI by C. - beta 23
+  name: Thermostat TPI by C. - beta 24
   description: "
     
     ___
@@ -127,23 +127,40 @@ blueprint:
     
     ___
     
-    ## Pré-requis - dépendances externes (intégrations, services...)
+    ## Pré-requis - dépendances externes (intégrations, cartes, services...) pour ce projet Chauffage de bout en bout
     
     Ce projet nécessite, hormis les lignes de code dispos dans le readme et les deux blueprints :
     
-    - intégration Scheduler
+    - intégration : [Scheduler Custom Component](https://community.home-assistant.io/t/scheduler-card-custom-component/217458) (via HACS)
     
-    - à compléter
+    - intégration : [Scheduler](https://community.home-assistant.io/t/scheduler-card-custom-component/217458) (via Paramètres > Intégrations)
+    
+    - custom card : [Scheduler-card](https://github.com/nielsfaber/scheduler-card#installation)
+    
+    - intégration : [OpenWeatherMap](https://www.home-assistant.io/integrations/openweathermap) (optionnel)
+    
+    - intégration : [Workday](https://www.home-assistant.io/integrations/workday)
+    
+    - custom card : [Button-card](https://github.com/custom-cards/button-card)
+    
+    - custom card : [Hui-element-card](https://github.com/thomasloven/lovelace-hui-element)
+    
+    - custom card : [Numberbox-card](https://github.com/htmltiger/numberbox-card)
+    
+    - custom card : [Vertical-stack-in-card](https://github.com/ofekashery/vertical-stack-in-card)
+    
+    - custom card : [ApexCharts-card](https://github.com/RomRider/apexcharts-card)
     
     ___
     
-    ## Pré-requis - mise en place de ce blueprint Pilotage Chauffage :
+    ## Pré-requis - mise en place de ce blueprint Thermostat TPI :
     
     Voir tuto/readme du projet, vous devez avoir déjà mis en place :
-    - Etape 2 : la carte Lovelace Choix du mode de chauffage et état
-    - Etape 3 : le Blueprint Thermostat TPI
+
+    - Etape 1 : le hardware (sondes/switches) sur HA
+
+    - Etape 2 : la carte Lovelace Choix du mode de chauffage et état, dont création des inputs
     
-    - Etape 4 - La planification, via Scheduler (notamment lister/connaitre les noms des entités des planifications créées par Scheduler)
     ___
         
     ## Evolutions par Ciscoo45 Vs Argonaute
@@ -193,7 +210,7 @@ blueprint:
     
     # Paramétrage du Blueprint
     "
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b23.yaml
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b24.yaml
   domain: automation
 
   input:
