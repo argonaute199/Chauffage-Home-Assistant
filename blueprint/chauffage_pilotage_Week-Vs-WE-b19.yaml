@@ -153,25 +153,25 @@ blueprint:
     
     Ce projet nécessite, hormis les lignes de code dispos dans le readme et les deux blueprints :
     
-    - intégration : Scheduler Custom Component (via HACS)
+    - intégration : [Scheduler Custom Component](https://community.home-assistant.io/t/scheduler-card-custom-component/217458) (via HACS)
     
-    - intégration : Scheduler (via Paramètres > Intégrations)
+    - intégration : [Scheduler](https://community.home-assistant.io/t/scheduler-card-custom-component/217458) (via Paramètres > Intégrations)
     
-    - custom card : Scheduler-card
+    - custom card : [Scheduler-card](https://github.com/nielsfaber/scheduler-card#installation)
     
-    - intégration : OpenWeatherMap (optionnel)
+    - intégration : [OpenWeatherMap](https://www.home-assistant.io/integrations/openweathermap) (optionnel)
     
-    - intégration : Workday
+    - intégration : [Workday](https://www.home-assistant.io/integrations/workday)
     
-    - custom card : Button-card
+    - custom card : [Button-card](https://github.com/custom-cards/button-card)
     
-    - custom card : Hui-element-card
+    - custom card : [Hui-element-card](https://github.com/thomasloven/lovelace-hui-element)
     
-    - custom card : Numberbox-card
+    - custom card : [Numberbox-card](https://github.com/htmltiger/numberbox-card)
     
-    - custom card : Vertical-stack-in-card
+    - custom card : [Vertical-stack-in-card](https://github.com/ofekashery/vertical-stack-in-card)
 
-    - custom card : ApexCharts-card
+    - custom card : [ApexCharts-card](https://github.com/RomRider/apexcharts-card)
 
     ___
     
