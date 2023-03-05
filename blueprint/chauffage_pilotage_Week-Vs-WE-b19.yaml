@@ -179,11 +179,13 @@ blueprint:
     
     Voir tuto/readme du projet, vous devez avoir déjà mis en place :
 
+    - Etape 1 : le hardware (sondes/switches) sur HA
+
     - Etape 2 : la carte Lovelace Choix du mode de chauffage et état
 
     - Etape 3 : le Blueprint Thermostat TPI
     
-    - Etape 4 - La planification, via Scheduler (notamment lister/connaitre les noms des entités des planifications créées par Scheduler)
+    - Etape 4 - la planification, via Scheduler (notamment lister/connaitre les noms des entités des planifications créées par Scheduler)
 
     ___
         
