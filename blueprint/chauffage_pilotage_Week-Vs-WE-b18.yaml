@@ -153,9 +153,26 @@ blueprint:
     
     Ce projet nécessite, hormis les lignes de code dispos dans le readme et les deux blueprints :
     
-    - intégration Scheduler
+    - intégration : Scheduler Custom Component (via HACS)
     
-    - à compléter
+    - intégration : Scheduler (via Paramètres > Intégrations)
+    
+    - custom card : Scheduler-card
+    
+    - intégration : OpenWeatherMap (optionnel)
+    
+    - intégration : Workday
+    
+    - custom card : Button-card
+    
+    - custom card : Hui-element-card
+    
+    - custom card : Numberbox-card
+    
+    - custom card : Vertical-stack-in-card
+
+    - custom card : ApexCharts-card
+
     
     ___
     
