@@ -227,7 +227,7 @@ blueprint:
     
     - en détail : bandeau de navigation d'une page à une autre du dashboard
     
-    - graph ApexChart d'utilisation de chaque radiateur
+    - graph ApexChart sur 6h et 24h, avec temp ext
     
     - et plus à venir on espère
     
