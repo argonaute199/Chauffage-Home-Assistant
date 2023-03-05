@@ -185,7 +185,7 @@ blueprint:
     
     - choix perso : les entités *fenetre* sont renommées en *ouverture* (peut convenir ainsi pour une fenêtre, un velux, une porte…)
     
-    - choix perso : les entités *chauffage* renommées en *radiateur*
+    - choix perso : les entités *chauffage* sont renommées en *radiateur*
     
     - choix perso : icône *mdi:target* pour la consigne
     
