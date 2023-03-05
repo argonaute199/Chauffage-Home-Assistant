@@ -1,5 +1,5 @@
 blueprint:
-  name: Thermostat TPI by C. - beta 22
+  name: Thermostat TPI by C. - beta 23
   description: "
     
     ___
@@ -122,13 +122,14 @@ blueprint:
     
     - capteur d'ouverture par fenêtre (peut être virtualisé si absent), à regrouper si multiples
     
+    
     Plus d'infos sur les choix possibles et le codage des sondes virtuelles dans le readme du projet.
     
     ___
     
     ## Pré-requis - dépendances externes (intégrations, services...)
     
-    Ce projet nécessite, hormis les lignes de code dispos dans la doc et les deux blueprints :
+    Ce projet nécessite, hormis les lignes de code dispos dans le readme et les deux blueprints :
     
     - intégration Scheduler
     
@@ -138,14 +139,11 @@ blueprint:
     
     ## Pré-requis - mise en place de ce blueprint Pilotage Chauffage :
     
-    voir tuto/readme du projet, avoir déjà mis en place :
-
+    Voir tuto/readme du projet, vous devez avoir déjà mis en place :
     - Etape 2 : la carte Lovelace Choix du mode de chauffage et état
-
     - Etape 3 : le Blueprint Thermostat TPI
     
     - Etape 4 - La planification, via Scheduler (notamment lister/connaitre les noms des entités des planifications créées par Scheduler)
-
     ___
         
     ## Evolutions par Ciscoo45 Vs Argonaute
@@ -154,17 +152,17 @@ blueprint:
     
     - évolution des champs descriptifs
     
-    - fonctionnel : suppression du mode Absence d'Argonaute (les absences sont gérées sur la planif éco, à savoir le mode "Absence" ici)
+    - fonctionnel : suppression du mode *Absence* d'Argonaute (les absences sont gérées sur la planif éco, à savoir le mode *Absence* ici)
     
-    - renommage des modes "Auto - confort" et "Auto - eco" (Argonaute), en "Presence" et "Absence" (C.) : ainsi on essaie de clarifier l'usage prévu par Argonaute, et on simplifie en ayant un seul mode Absence
+    - renommage des modes *Auto - confort* et *Auto - eco* (Argonaute), en *Presence* et *Absence* (C.) : ainsi on essaie de clarifier l'usage prévu par Argonaute, et on simplifie en ayant un seul mode *Absence*
     
-    - clarification : mode "Stop" (Argonaute) renommé en mode "Arret" (mode utilisé l'été)
+    - clarification : mode *Stop* (Argonaute) renommé en mode *Arret* (mode utilisé l'été)
     
-    - choix perso : les entités "fenetre" sont renommées en "ouverture" (peut convenir ainsi pour une fenêtre, un velux, une porte…)
+    - choix perso : les entités *fenetre* sont renommées en *ouverture* (peut convenir ainsi pour une fenêtre, un velux, une porte…)
     
-    - choix perso : les entités "chauffage" sont renommées en "radiateur"
+    - choix perso : les entités *chauffage* sont renommées en *radiateur*
     
-    - choix perso : icône mdi:target pour la consigne
+    - choix perso : icône *mdi:target* pour la consigne
     
     - **multiples programmations possibles pour le mode Presence** (ou Absence) d'une pièce : par ex. un schedule semaine et un schedule WE & férié, avec le mode Absence qui peut être aligné à 1 ou 2 degrés en-dessous
     
@@ -173,10 +171,11 @@ blueprint:
     
     . **blueprint Thermostat TPI** :
     
-    - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de coeff_c et coeff_t
+    - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de *coeff_c* et *coeff_t*
     
     
-    . **Autres parties du projet Gestion bout en bout du chauffage** :
+    . **autres parties du projet Gestion bout en bout du chauffage** :
+    
     
     Ajout de documentation pas-à-pas pour compléter celle déjà rendue disponible par Argonaute et continuer autour des propositions disponibles sur le topic :
     
@@ -194,7 +193,7 @@ blueprint:
     
     # Paramétrage du Blueprint
     "
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b22.yaml
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b23.yaml
   domain: automation
 
   input:
