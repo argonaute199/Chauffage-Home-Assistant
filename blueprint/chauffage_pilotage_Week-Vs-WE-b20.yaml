@@ -148,7 +148,7 @@ blueprint:
     
     ___
     
-    ## Pré-requis - dépendances externes (intégrations, cartes, services...)
+    ## Pré-requis - dépendances externes (intégrations, cartes, services...) pour ce projet Chauffage de bout en bout
     
     Ce projet nécessite, hormis les lignes de code dispos dans le readme et les deux blueprints :
     
@@ -180,7 +180,7 @@ blueprint:
 
     - Etape 1 : le hardware (sondes/switches) sur HA
 
-    - Etape 2 : la carte Lovelace Choix du mode de chauffage et état
+    - Etape 2 : la carte Lovelace Choix du mode de chauffage et état, dont création des inputs
 
     - Etape 3 : le Blueprint Thermostat TPI
     
@@ -241,7 +241,7 @@ blueprint:
   input:
     entity_consigne:
       name: Consigne
-      description: Champs d'entrée de la température de Consigne (input number)
+      description: Champs d'entrée de la température de Consigne (input_number)
       selector:
         entity:
           domain: input_number
