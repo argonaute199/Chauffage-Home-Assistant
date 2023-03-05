@@ -45,7 +45,7 @@ blueprint:
     Voyons maintenant chacun des modes, et comment le changement de mode active ou désactive les 3 automatisations Thermostat TPI, Presence, Absence :
     
     
-      . mode Presence :
+        . mode Presence :
       
         - automatisation thermostat : ON
         
@@ -56,7 +56,7 @@ blueprint:
         - automatisation Absence QUO : OFF
         
     
-      . mode Absence :
+        . mode Absence :
       
         - automatisation thermostat : ON
         
@@ -67,7 +67,7 @@ blueprint:
         - automatisation Absence QUO : ON
         
     
-      . mode Hors-gel :
+        . mode Hors-gel :
       
         - automatisation thermostat : ON
         
@@ -80,7 +80,7 @@ blueprint:
         - consigne : forcée à 10°C (bon un peu plus qu’un hors gel…)
         
     
-      . mode Manuel :
+        . mode Manuel :
       
         - automatisation thermostat : ON
         
@@ -91,7 +91,7 @@ blueprint:
         - automatisation Absence QUO : OFF
         
     
-      . mode Arret :
+        . mode Arret :
       
         - automatisation thermostat : OFF
         
