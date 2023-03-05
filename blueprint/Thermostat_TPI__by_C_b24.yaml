@@ -270,7 +270,7 @@ blueprint:
           step: 0.001
     entity_consigne:
       name: Consigne
-      description: Champ d'entrée de la température de Consigne (input number)
+      description: Champ d'entrée de la température de Consigne (input_number)
       selector:
         entity:
           domain: input_number
@@ -290,7 +290,7 @@ blueprint:
           device_class: temperature
     entity_fenetre:
       name: Fenêtre(s)
-      description: (groupe de) Capteur(s) d'ouverture de fenêtre(s) (binary sensor)
+      description: (groupe de) Capteur(s) d'ouverture de fenêtre(s) (binary_sensor)
       selector:
         entity:
           domain: binary_sensor
