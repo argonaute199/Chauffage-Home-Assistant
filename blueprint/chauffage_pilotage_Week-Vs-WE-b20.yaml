@@ -186,7 +186,7 @@ blueprint:
 
     - Etape 3 : le Blueprint Thermostat TPI
     
-    - Etape 4 - la planification, via Scheduler (notamment lister/connaitre les noms des entités des planifications créées par Scheduler)
+    - Etape 4 : la planification, via Scheduler (notamment lister/connaitre les noms des entités des planifications créées par Scheduler)
 
     ___
         
