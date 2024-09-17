@@ -1,6 +1,6 @@
 blueprint:
   name: Thermostat TPI
-  description: Thermostat TPI (Time Propertional & Integral)
+  description: Thermostat TPI (Time Proportional & Integral)
   domain: automation
   source_url: https://github.com/argonaute199/chauffage-home-assistant/blob/main/blueprint/thermostat_tpi.yaml
 
