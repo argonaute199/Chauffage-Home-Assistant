@@ -12,14 +12,15 @@ Forks here:
     - based on Presence-Absence version
     - support multiple schedules for Presence mode (ex Week & Weekend)
     - tested ok in v.0.24
-    - note : multi open-windows sensor still need to group them
+    - note: multi open-windows sensor still need to group them
 
 . more to come : [Work in progress : 0.25+]
 
     - based on Week-Vs-WE version
     - support for inverted light switch like SonOff ZBMini/ZBMini2R + diode (inversed On/Off)
-    - later : add support for a limited time boost period
-    - later : add support for target temperature auto-change option in case of EDF Tempo Red day
+    - later: add support for a limited time boost period
+    - later: add support for target temperature auto-change option in case of EDF Tempo Red day
+    - later: delay so every Thermostat doesn't start at the same moment (load optimization)
     - in an another life: humidity threshold not to be exceeded (auto-boost)
 
 Thanks Argonaute for this beautiful work and tuto!
