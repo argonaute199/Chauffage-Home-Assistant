@@ -20,6 +20,7 @@ Forks here:
     - support for inverted light switch like SonOff ZBMini/ZBMini2R + diode (inversed On/Off)
     - later : add support for a limited time boost period
     - later : add support for target temperature auto-change option in case of EDF Tempo Red day
+    - in an another life: humidity threshold not to be exceeded (auto-boost)
 
 Thanks Argonaute for this beautiful work and tuto!
 
