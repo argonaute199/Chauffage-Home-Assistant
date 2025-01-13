@@ -23,7 +23,7 @@ Forks here:
 
 Thanks Argonaute for this beautiful work and tuto!
 
-############################################## ORIGINAL README ##########################
+############################################## ORIGINAL README ########################################
 
 Home Assistant - Gestion de bout en bout du chauffage
 
