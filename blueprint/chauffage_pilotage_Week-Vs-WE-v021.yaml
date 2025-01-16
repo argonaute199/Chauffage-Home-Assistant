@@ -1,5 +1,5 @@
 blueprint:
-  name: Pilotage chauffage by C. - Semaine et WE/fériés - beta 20
+  name: Pilotage chauffage by C. - Semaine et WE/fériés - version 0.21
   description: "
     
     ___
@@ -107,7 +107,7 @@ blueprint:
         
     ## Commentaires Ciscoo45
                     
-    . **Attention** - paramétrage du blueprint : bien utiliser les nom d'entités des switchs identifiés au préalables pour les planifs, ceux créés par Scheduler
+    . **Attention** - paramétrage du blueprint : bien utiliser les nom d'entités des switchs identifiés au préalables pour les planifs (ceux créés par Scheduler)
     
     
     . à propos de la **muti-programmation** :
@@ -214,6 +214,8 @@ blueprint:
     . **blueprint Thermostat TPI** :
     
     - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de *coeff_c* et *coeff_t*
+
+    - ajout de l'option de passer en mode inversé pour le déclenchement, pour les relais qui nécessitent la position Off pour déclencher la chauffe (ex. SonOff ZBminiR2 + diode)
     
     
     . **autres parties du projet Gestion bout en bout du chauffage** :
@@ -235,7 +237,7 @@ blueprint:
     
     # Paramétrage du Blueprint
     "
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/chauffage_pilotage_Week-Vs-WE-b20.yaml
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/chauffage_pilotage_Week-Vs-WE-v021.yaml
   domain: automation
 
   input:
