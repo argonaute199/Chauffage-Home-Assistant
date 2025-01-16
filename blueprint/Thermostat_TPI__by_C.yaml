@@ -1,6 +1,8 @@
 blueprint:
-  name: Thermostat TPI by C. - beta 24
+  name: Thermostat TPI by C.
   description: "
+
+    version 0.25
     
     ___
     
@@ -91,7 +93,7 @@ blueprint:
     - à l'isolation et l'inertie de la pièce
     
     
-    Pas d'apprentissage mais une formule simple, efficace et approuvée :
+    Pas d'apprentissage mais une formule simple, efficace, approuvée :
     
                 
     ` Puissance = coeff_c * (Tconsigne - Tintérieure) + coeff_t * (Tconsigne - Textérieure)`
@@ -131,25 +133,25 @@ blueprint:
     
     Ce projet nécessite, hormis les lignes de code dispos dans le readme et les deux blueprints :
     
-    - intégration : [Scheduler Custom Component](https://community.home-assistant.io/t/scheduler-card-custom-component/217458) (via HACS)
+    - intégration : [Scheduler Custom Component] (https://community.home-assistant.io/t/scheduler-card-custom-component/217458) (via HACS)
     
-    - intégration : [Scheduler](https://community.home-assistant.io/t/scheduler-card-custom-component/217458) (via Paramètres > Intégrations)
+    - intégration : [Scheduler] (https://community.home-assistant.io/t/scheduler-card-custom-component/217458) (via Paramètres > Intégrations)
     
-    - custom card : [Scheduler-card](https://github.com/nielsfaber/scheduler-card#installation)
+    - custom card : [Scheduler-card] (https://github.com/nielsfaber/scheduler-card#installation)
     
-    - intégration : [OpenWeatherMap](https://www.home-assistant.io/integrations/openweathermap) (optionnel)
+    - intégration : [OpenWeatherMap] (https://www.home-assistant.io/integrations/openweathermap) (optionnel)
     
-    - intégration : [Workday](https://www.home-assistant.io/integrations/workday)
+    - intégration : [Workday] (https://www.home-assistant.io/integrations/workday)
     
-    - custom card : [Button-card](https://github.com/custom-cards/button-card)
+    - custom card : [Button-card] (https://github.com/custom-cards/button-card)
     
-    - custom card : [Hui-element-card](https://github.com/thomasloven/lovelace-hui-element)
+    - custom card : [Hui-element-card] (https://github.com/thomasloven/lovelace-hui-element)
     
-    - custom card : [Numberbox-card](https://github.com/htmltiger/numberbox-card)
+    - custom card : [Numberbox-card] (https://github.com/htmltiger/numberbox-card)
     
-    - custom card : [Vertical-stack-in-card](https://github.com/ofekashery/vertical-stack-in-card)
+    - custom card : [Vertical-stack-in-card] (https://github.com/ofekashery/vertical-stack-in-card)
     
-    - custom card : [ApexCharts-card](https://github.com/RomRider/apexcharts-card)
+    - custom card : [ApexCharts-card] (https://github.com/RomRider/apexcharts-card)
     
     ___
     
@@ -189,6 +191,8 @@ blueprint:
     . **blueprint Thermostat TPI** :
     
     - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de *coeff_c* et *coeff_t*
+
+    - ajout de l'option de passer en mode inversé pour le déclenchement, pour les relais qui nécessitent la position Off pour déclencher la chauffe (ex. SonOff ZBminiR2 + diode)
     
     
     . **autres parties du projet Gestion bout en bout du chauffage** :
@@ -210,7 +214,7 @@ blueprint:
     
     # Paramétrage du Blueprint
     "
-  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c_b24.yaml
+  source_url: https://github.com/Ciscoo45/chauffage-home-assistant/edit/Week-Vs-WE/blueprint/thermostat_tpi_by_c.yaml
   domain: automation
 
   input:
@@ -307,6 +311,13 @@ blueprint:
       selector:
         entity:
           domain: switch
+    entity_mode_inverse:
+      name: Inversé
+      description: Si activé, le chauffage sera allumé lorsque le switch est Off, et éteint lorsque le switch est sur On. L'activer permet la compatibilité avec les relais type OnOff ZBminiR2.
+      default: false
+      selector:
+        boolean: {}
+
 
 # Récupération des paramètres
 variables:
@@ -315,6 +326,18 @@ variables:
   entity_temp_int: !input entity_temp_int
   entity_temp_ext: !input entity_temp_ext
   entity_fenetre: !input entity_fenetre
+  service_off: >
+    {%- if !input entity_mode_inverse -%}
+      switch.turn_off
+    {%- else -%}
+      switch.turn_on
+    {%- endif -%}
+  service_on: >
+    {%- if !input entity_mode_inverse -%}
+      switch.turn_on
+    {%- else -%}
+      switch.turn_off
+    {%- endif -%}
 
 trigger:
   - platform: time_pattern
@@ -345,28 +368,32 @@ action:
       entity_id: !input entity_puissance
     data:
       value: '{{puissance}}'  
+
+# nouveau code - pour prise en charge du mode inversé au moment de déclencher
   - choose:
       - conditions:
           - condition: template
-            value_template: '{{puissance == 0}}'
+            value_template: "{{ puissance == 0 }}"
         sequence:
-          - service: switch.turn_off
+          - service: "{{ service_off }}"
             target:
               entity_id: !input entity_chauffage
+
       - conditions:
           - condition: template
-            value_template: '{{ puissance > 99}}'
+            value_template: "{{ puissance > 99 }}"
         sequence:
-          - service: switch.turn_on
+          - service: "{{ service_on }}"
             target:
               entity_id: !input entity_chauffage
     default:
-      - service: switch.turn_on
+      - service: "{{ service_on }}"
         target:
           entity_id: !input entity_chauffage
-      - delay: '{{temps_chauffe}}'
-      - service: switch.turn_off
+      - delay: "{{ temps_chauffe }}"
+      - service: "{{ service_off }}"
         target:
           entity_id: !input entity_chauffage
+          
 mode: restart
  
