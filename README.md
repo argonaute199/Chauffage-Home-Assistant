@@ -12,6 +12,7 @@ Forks here:
     - based on Presence-Absence version
     - support multiple schedules for Presence mode (ex Week & Weekend)
     - tested ok in v.0.24
+    - 0.25 : add support for inverted relay (ex SonOff ZBminiR2)
     - note: multi open-windows sensor still need to group them
 
 . more to come : [Work in progress : 0.25+]
