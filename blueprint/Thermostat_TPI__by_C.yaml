@@ -328,13 +328,13 @@ variables:
   entity_fenetre: !input entity_fenetre
   entity_mode_inverse: !input entity_mode_inverse
   service_off: >
-    {%- if !input entity_mode_inverse -%}
+    {%- if entity_mode_inverse -%}
       switch.turn_off
     {%- else -%}
       switch.turn_on
     {%- endif -%}
   service_on: >
-    {%- if !input entity_mode_inverse -%}
+    {%- if entity_mode_inverse -%}
       switch.turn_on
     {%- else -%}
       switch.turn_off
