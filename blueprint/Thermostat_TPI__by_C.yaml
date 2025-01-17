@@ -370,8 +370,6 @@ action:
       entity_id: !input entity_puissance
     data:
       value: '{{puissance}}'  
-
-# nouveau code - pour prise en charge du mode inversé au moment de déclencher
   - choose:
       - conditions:
           - condition: template
