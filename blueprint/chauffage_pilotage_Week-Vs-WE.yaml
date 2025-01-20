@@ -222,7 +222,7 @@ blueprint:
  
     - température du mode Hors-gel ajustable (curseur dans le BluePrint)
 
-    - correction d'un bug au passage en position Arrêt, où le chauffage pouvait continuer à fonctionner (délai ajouter avant de couper le Blueprint Thermostat TPI afin qu'il puisse calculer la fin de chauffe)
+    - correction d'un bug au passage en position Arrêt, où le chauffage pouvait continuer à fonctionner (délai ajouté avant de couper le Blueprint Thermostat TPI, afin qu'il puisse calculer la fin de chauffe)
     
     
     . **autres parties du projet Gestion bout en bout du chauffage** :
