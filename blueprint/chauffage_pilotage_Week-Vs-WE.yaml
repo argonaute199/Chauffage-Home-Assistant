@@ -261,12 +261,12 @@ blueprint:
       selector:
         entity:
           domain: input_number
-    entity_puissance:
-      name: Puissance
-      description: Utilisation calculée de la puissance de chauffe (input_number)
-      selector:
-        entity:
-          domain: input_number
+    #entity_puissance:
+    #  name: Puissance
+    #  description: Utilisation calculée de la puissance de chauffe (input_number)
+    #  selector:
+    #    entity:
+    #      domain: input_number
     entity_mode:
       name: Sélection du Mode
       description: Entité de gestion du Mode de gestion du chauffage (input_select)
@@ -326,22 +326,24 @@ action:
             target:
               entity_id: !input entity_consigne
           #debug: ajout du passage de la puissance à 0 (avant coupure des prog et thermsotat TPI)
-          - service: input_number.set_value
-            data:
-              value: 0
-            target:
-              entity_id: !input entity_puissance
+          #- service: input_number.set_value
+          #  data:
+          #    value: 0
+          #  target:
+          #    entity_id: !input entity_puissance
           - service: switch.turn_off
             target:
               entity_id: !input entity_schedule_absence
           - service: switch.turn_off
             target:
               entity_id: !input entity_schedule_presence
-          #essai en ne désactivant pas le blueprint thermostat TPI en mode Arrêt (été)
-          #- service: automation.turn_off
-          #  target:
-          #    entity_id: !input entity_thermostat_tpi
-          #vérifier que le l'interupteur du chauffage est alors toujours arrêté effectivement (vérifier aussi la valeur de chauffe indiquée dans la carte Lovelace)
+          #insertion d'un délai de 1sec, pour que le blueprint Thermostat TPI ait le temps de calculer le passage de puissance à 0 et de couper le l'interupteur du chauffage, avant que le BLueprint CHauffage présent ne le désactive (mode Arrêt)
+          - delay: 
+              seconds: 1
+          - service: automation.turn_off
+            target:
+              entity_id: !input entity_thermostat_tpi
+          vérifier que le l'interupteur du chauffage est alors toujours arrêté effectivement (vérifier aussi la valeur de chauffe indiquée dans la carte Lovelace)
               
       # ----- Mode Hors-gel
       - conditions:
