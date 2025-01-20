@@ -337,7 +337,7 @@ action:
           - service: switch.turn_off
             target:
               entity_id: !input entity_schedule_presence
-          #insertion d'un délai de 1sec, pour que le blueprint Thermostat TPI ait le temps de calculer le passage de puissance à 0 et de couper le l'interupteur du chauffage, avant que le BLueprint CHauffage présent ne le désactive (mode Arrêt)
+          #insertion d'un délai de 1sec, pour que le blueprint Thermostat TPI ait le temps de calculer le passage de puissance à 0 et de couper l'interupteur du chauffage, avant que le BLueprint CHauffage présent ne le désactive (mode Arrêt)
           - delay: 
               seconds: 1
           - service: automation.turn_off
