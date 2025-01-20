@@ -221,6 +221,8 @@ blueprint:
     - gestion automatique de la bascule en planif WE et jours fériés (ajout possible aussi de période de congés à la maison) : via l'utilisation de l'intégration Workday et des programmations multiples
  
     - température du mode Hors-gel ajustable (curseur dans le BluePrint)
+
+    - correction d'un bug au passage en position Arrêt, où le chauffage pouvait continuer à fonctionner (délai ajouter avant de couper le Blueprint Thermostat TPI afin qu'il puisse calculer la fin de chauffe)
     
     
     . **autres parties du projet Gestion bout en bout du chauffage** :
@@ -261,12 +263,6 @@ blueprint:
       selector:
         entity:
           domain: input_number
-    #entity_puissance:
-    #  name: Puissance
-    #  description: Utilisation calculée de la puissance de chauffe (input_number)
-    #  selector:
-    #    entity:
-    #      domain: input_number
     entity_mode:
       name: Sélection du Mode
       description: Entité de gestion du Mode de gestion du chauffage (input_select)
@@ -325,25 +321,19 @@ action:
               value: 0
             target:
               entity_id: !input entity_consigne
-          #debug: ajout du passage de la puissance à 0 (avant coupure des prog et thermsotat TPI)
-          #- service: input_number.set_value
-          #  data:
-          #    value: 0
-          #  target:
-          #    entity_id: !input entity_puissance
           - service: switch.turn_off
             target:
               entity_id: !input entity_schedule_absence
           - service: switch.turn_off
             target:
               entity_id: !input entity_schedule_presence
-          #insertion d'un délai de 1sec, pour que le blueprint Thermostat TPI ait le temps de calculer le passage de puissance à 0 et de couper l'interupteur du chauffage, avant que le BLueprint CHauffage présent ne le désactive (mode Arrêt)
+          #insertion d'un délai de 1sec, pour que le blueprint Thermostat TPI ait le temps de calculer le passage de puissance à 0 et de couper l'interupteur du chauffage, avant que le Blueprint Chauffage présent ne le désactive (mode Arrêt)
           - delay: 
               seconds: 1
           - service: automation.turn_off
             target:
               entity_id: !input entity_thermostat_tpi
-          #vérifier que le l'interupteur du chauffage est alors toujours arrêté effectivement (vérifier aussi la valeur de chauffe indiquée dans la carte Lovelace)
+  
               
       # ----- Mode Hors-gel
       - conditions:
