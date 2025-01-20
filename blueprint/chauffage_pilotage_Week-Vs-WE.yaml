@@ -266,8 +266,7 @@ blueprint:
       description: Utilisation calculée de la puissance de chauffe (input_number)
       selector:
         entity:
-          domain:
-          - input_number
+          domain: input_number
     entity_mode:
       name: Sélection du Mode
       description: Entité de gestion du Mode de gestion du chauffage (input_select)
@@ -326,6 +325,7 @@ action:
               value: 0
             target:
               entity_id: !input entity_consigne
+          #debug: ajout du passage de la puissance à 0 (avant coupure des prog et thermsotat TPI)
           - service: input_number.set_value
             data:
               value: 0
@@ -340,6 +340,7 @@ action:
           - service: automation.turn_off
             target:
               entity_id: !input entity_thermostat_tpi
+          #vérifier que le l'interupteur du chauffage est alors toujours arrêté effectivement (vérifier aussi la valeur de chauffe indiquée dans la carte Lovelace)
               
       # ----- Mode Hors-gel
       - conditions:
