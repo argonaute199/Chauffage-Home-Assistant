@@ -243,8 +243,8 @@ blueprint:
   domain: automation
 
   input:
-     temperature_hg:
-        name: Température pour le mode Hors-gel
+    temperature_hg:
+      name: Température pour le mode Hors-gel
         description: "Défaut : 8°C - Ne se modifie uniquement qu'ici"
         selector:
           number:
@@ -265,7 +265,7 @@ blueprint:
         entity:
           domain: input_select
     entity_schedule_presence:
-      name: Schedule mode Presence
+      name: Schedule mode Présence
       description: Entité(s) générée(s) par Scheduler pour la planification du mode Presence (switch)
       selector:
         entity:
