@@ -337,9 +337,10 @@ action:
           - service: switch.turn_off
             target:
               entity_id: !input entity_schedule_presence
-          - service: automation.turn_off
-            target:
-              entity_id: !input entity_thermostat_tpi
+          #essai en ne désactivant pas le blueprint thermostat TPI en mode Arrêt (été)
+          #- service: automation.turn_off
+          #  target:
+          #    entity_id: !input entity_thermostat_tpi
           #vérifier que le l'interupteur du chauffage est alors toujours arrêté effectivement (vérifier aussi la valeur de chauffe indiquée dans la carte Lovelace)
               
       # ----- Mode Hors-gel
