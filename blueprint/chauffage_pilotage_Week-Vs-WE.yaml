@@ -245,7 +245,7 @@ blueprint:
   input:
     temperature_hg:
       name: Température pour le mode Hors-gel
-        description: "Défaut : 8°C - Ne se modifie uniquement qu'ici"
+        description: Défaut : 8°C - Ne se modifie uniquement qu'ici
         selector:
           number:
             min: 2.0
