@@ -343,7 +343,7 @@ action:
           - service: automation.turn_off
             target:
               entity_id: !input entity_thermostat_tpi
-          vérifier que le l'interupteur du chauffage est alors toujours arrêté effectivement (vérifier aussi la valeur de chauffe indiquée dans la carte Lovelace)
+          #vérifier que le l'interupteur du chauffage est alors toujours arrêté effectivement (vérifier aussi la valeur de chauffe indiquée dans la carte Lovelace)
               
       # ----- Mode Hors-gel
       - conditions:
