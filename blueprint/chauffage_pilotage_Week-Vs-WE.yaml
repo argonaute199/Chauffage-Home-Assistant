@@ -109,7 +109,7 @@ blueprint:
         
     ## Commentaires Ciscoo45
                     
-    . **Attention** - paramétrage du blueprint : bien utiliser les nom d'entités des switchs identifiés au préalables pour les planifs (ceux créés par Scheduler)
+    . **Attention** - paramétrage du blueprint : bien utiliser les noms d'entités des switchs identifiés au préalables pour les planifs (ceux créés par Scheduler)
     
     
     . à propos de la **muti-programmation** :
@@ -127,7 +127,7 @@ blueprint:
     
     . Programmation horaire (schedule) - Le thermostat **n'anticipe pas** car il **n'apprend pas**
     
-    Contrairement à certains thermostats physiques autonomes (comme le Nest etc.) ou contrairement au thermostat Jeedom, le thermostat présent n'apprend pas. Il ne peut donc pas anticiper une consigne à la hausse ou à la baisse.
+    Contrairement à certains thermostats physiques autonomes (comme le Nest, etc.) ou contrairement au thermostat Jeedom, le thermostat présent n'apprend pas. Il ne peut donc pas anticiper une consigne à la hausse ou à la baisse.
     
     Si vous désirez une augmentation de consigne d'1°C atteinte pour 7h, c'est à vous de **plannifier cette augmentation 15min, 30min ou encore 45min avant l'heure où la consigne doit être atteinte**, suivant les conditions moyennes pour cette pièce (inertie, conditions extérieures comme écart de température, vent,  soleil, exposition de la pièce à ces éléments..).
     
@@ -186,7 +186,7 @@ blueprint:
 
     - Etape 3 : le Blueprint Thermostat TPI
     
-    - Etape 4 : la planification, via Scheduler (notamment lister/connaitre les noms des entités des planifications créées par Scheduler)
+    - Etape 4 : la planification, à créer via Scheduler (notamment lister/connaitre les noms des entités des planifications créées par Scheduler)
 
     ___
         
@@ -217,7 +217,7 @@ blueprint:
     
     - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de *coeff_c* et *coeff_t*
 
-    - ajout de l'option de passer en mode inversé pour le déclenchement, pour les relais qui nécessitent la position Off pour déclencher la chauffe (ex. SonOff ZBminiR2 + diode)
+    - ajout de l'option de passer en mode inversé pour le déclenchement, pour les relais qui nécessitent la position Off pour déclencher la chauffe (ex. SonOff ZBmini+diode)
     
     
     . **autres parties du projet Gestion bout en bout du chauffage** :
@@ -245,13 +245,13 @@ blueprint:
   input:
     temperature_hg:
       name: Température pour le mode Hors-gel
-        description: Défaut 8 degC (ne se modifie uniquement qu'ici)
-        selector:
-          number:
-            min: 2.0
-            max: 14.0
-            step: 0.5
-            default: 8.0
+      description: "Défaut 8°C (ne se modifie uniquement qu'ici)"
+      default: 8.0
+      selector:
+        number:
+          min: 2.0
+          max: 14.0
+          step: 0.5
     entity_consigne:
       name: Consigne
       description: Champs d'entrée de la température de Consigne (input_number)
