@@ -2,7 +2,7 @@ blueprint:
   name: Pilotage chauffage by C. - Semaine et WE/fériés
   description: "
     
-    version 0.21
+    version 0.22
     
     ___
     
@@ -243,6 +243,15 @@ blueprint:
   domain: automation
 
   input:
+     temperature_hg:
+        name: Température pour le mode Hors-gel
+        description: "Défaut : 8°C - Ne se modifie uniquement qu'ici"
+      selector:
+        number:
+          min: 2.0
+          max: 14.0
+          step: 0.5
+          default: 8.0
     entity_consigne:
       name: Consigne
       description: Champs d'entrée de la température de Consigne (input_number)
@@ -278,8 +287,8 @@ blueprint:
 
 
 variables:
-  # Température pour le Hors-gel
-  temperature_hg: 10
+  temperature_hg: !input temperature_hg
+
 
 alias: Pilotage chauffage
 description: ''
