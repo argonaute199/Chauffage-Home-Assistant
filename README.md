@@ -24,7 +24,7 @@ Forks here:
     - later: add support for target temperature auto-change option in case of EDF Tempo Red day
     - later: delay so every Thermostat doesn't start at the same moment (load optimization)
     - maybe: humidity threshold not to be exceeded (auto-boost)
-    - maybe : develop an option to accept optional laod shedding during peak demand, as a civic act (Voltalis like)
+    - maybe: develop an option to accept optional laod shedding during peak demand, as a civic act (Voltalis like)
 
 Thanks Argonaute for this beautiful work and tuto!
 
