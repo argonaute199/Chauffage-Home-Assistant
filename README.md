@@ -1,13 +1,13 @@
 Forks here:
 
-. [Old] Presence-Absence: [ProdOk]
+[Old] Presence-Absence: [ProdOk]
 
     - based on Argonaute version
     - different mode names (Presence-Absence, instead of AutoConfort-AutoEco)
     - single Absence mode
     - 'radiateur' switch name instead of 'chauffage'
 
-. [Actual] Week-Vs-WE: [ProdOk]
+[Actual] Week-Vs-WE: [ProdOk]
 
     - based on Presence-Absence version
     - support multiple schedules for Presence (or Absence) modes (ex Week & Weekend temp targets)
@@ -15,7 +15,7 @@ Forks here:
     - tested ok in 0.27
     - note: multi open-windows sensor still need to group them
 
-. [More to come] [Work in progress : 0.28+]
+[More to come] [Work in progress : 0.28+]
 
     - based on Week-Vs-WE version 0.27
     - add support for adjustable temperature for frost protection mode
