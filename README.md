@@ -10,15 +10,15 @@ Forks here:
 [Actual] Week-Vs-WE: [ProdOk]
 
     - based on Presence-Absence version
-    - support multiple schedules for Presence (or Absence) modes (ex Week & Weekend temp targets)
-    - support for inverted relay (ex SonOff ZBmini+diode)
-    - tested ok in 0.27
+    - multiple schedules for Presence (or Absence) modes (ex Week & Weekend temp targets)
+    - inverted relay option (ex SonOff ZBmini+diode)
+    - adjustable temperature for frost protection mode (blueprint selector)
+    - tested ok in 0.28
     - note: multi open-windows sensor still need to group them
 
-[More to come] [Work in progress : 0.28+]
+[More to come] [Work in progress : 0.29+]
 
-    - based on Week-Vs-WE version 0.27
-    - add support for adjustable temperature for frost protection mode
+    - based on Week-Vs-WE version 0.28
     - add support for multi-heater in a same room / for one thermostat
     - later: add support for a limited time boost period
     - later: add support for target temperature auto-change option in case of EDF Tempo Red day
