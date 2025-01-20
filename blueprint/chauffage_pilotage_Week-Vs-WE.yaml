@@ -78,7 +78,7 @@ blueprint:
         
         - automatisation Absence QUO : OFF
         
-        - consigne : forcée à 10°C (bon un peu plus qu’un hors gel…)
+        - consigne : celle paramétrée dans le BluePrint Chauffage pour la position Hors-Gel [NEW]
         
     
     . mode Manuel :
@@ -109,7 +109,7 @@ blueprint:
         
     ## Commentaires Ciscoo45
                     
-    . **Attention** - paramétrage du blueprint : bien utiliser les noms d'entités des switchs identifiés au préalables pour les planifs (ceux créés par Scheduler)
+    . **Attention** - paramétrage du blueprint : bien utiliser les noms d'entités des switchs créés par le Scheduler pour les planifications (les renommer au préalable avec le nom de la pièce dans le nom de l'entité)
     
     
     . à propos de la **muti-programmation** :
@@ -191,6 +191,14 @@ blueprint:
     ___
         
     ## Evolutions par Ciscoo45 Vs Argonaute
+
+
+    . **blueprint Thermostat TPI** :
+    
+    - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de *coeff_c* et *coeff_t*
+
+    - ajout de l'option de passer en mode inversé pour le déclenchement, pour les relais qui nécessitent la position Off pour déclencher la chauffe (ex. SonOff ZBmini+diode)
+    
         
     . **blueprint Pilotage Chauffage** :
     
@@ -200,7 +208,7 @@ blueprint:
     
     - renommage des modes *Auto - confort* et *Auto - eco* (Argonaute), en *Presence* et *Absence* (C.) : ainsi on essaie de clarifier l'usage prévu par Argonaute, et on simplifie en ayant un seul mode *Absence*
     
-    - clarification : mode *Stop* (Argonaute) renommé en mode *Arret* (mode utilisé l'été)
+    - choix perso : mode *Stop* (Argonaute) renommé en mode *Arret* (mode utilisé l'été)
     
     - choix perso : les entités *fenetre* sont renommées en *ouverture* (peut convenir ainsi pour une fenêtre, un velux, une porte…)
     
@@ -211,13 +219,8 @@ blueprint:
     - **multiples programmations possibles pour le mode Presence** (ou Absence) d'une pièce : par ex. un schedule semaine et un schedule WE & férié, avec le mode Absence qui peut être aligné à 1 ou 2 degrés en-dessous
     
     - gestion automatique de la bascule en planif WE et jours fériés (ajout possible aussi de période de congés à la maison) : via l'utilisation de l'intégration Workday et des programmations multiples
-    
-    
-    . **blueprint Thermostat TPI** :
-    
-    - évolution des champs descriptifs, notamment pour aider au paramétrage des valeurs de *coeff_c* et *coeff_t*
-
-    - ajout de l'option de passer en mode inversé pour le déclenchement, pour les relais qui nécessitent la position Off pour déclencher la chauffe (ex. SonOff ZBmini+diode)
+ 
+    - température du mode Hors-gel ajustable (curseur dans le BluePrint)
     
     
     . **autres parties du projet Gestion bout en bout du chauffage** :
