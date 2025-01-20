@@ -13,13 +13,14 @@ Forks here:
     - multiple schedules for Presence (or Absence) modes (ex Week & Weekend temp targets)
     - inverted relay option (ex SonOff ZBmini+diode)
     - adjustable temperature for frost protection mode (blueprint selector)
+    - fixed: heater not cut in Stop mode (1sec delay to cut Thermostat TPI so it can calculate the stop)
     - tested ok in 0.28
     - note: multi open-windows sensor still need to group them
 
 [More to come] [Work in progress : 0.29+]
 
     - based on Week-Vs-WE version 0.28
-    - add support for multi-heater in a same room / for one thermostat
+    - add support for multi-heater in a same room / for one thermostat and one temperature sensor
     - later: add support for a limited time boost period
     - later: add support for target temperature auto-change option in case of EDF Tempo Red day
     - later: delay so every Thermostat doesn't start at the same moment (load optimization)
