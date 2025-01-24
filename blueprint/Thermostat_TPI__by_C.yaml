@@ -237,11 +237,11 @@ blueprint:
         
         - à **augmenter** si la chauffe n'est pas assez rapide pour cette pièce
              
-        - à **baisser** si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint :
+        - à **baisser** si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint (overshoot) :
              
-              . overshoot, par exemple si chauffage à forte inertie
+              . par exemple si chauffage à forte inertie
              
-              . ou si coeff_c est réglé beaucoup trop haut
+              . ou par exemple si coeff_c est réglé beaucoup trop haut
              
         - à **baisser** aussi si on obtient des oscillations à température stable"
       selector:
@@ -260,14 +260,14 @@ blueprint:
         
         - le coeff_t représente **l'isolation de la pièce et son inertie**
         
-        - plus il est haut, moins bien la pièce est isolée, son inertie est faible
+        - plus il est haut, moins bien la pièce est isolée, et/ou son inertie est faible
         
         
         **En pratique** (comportement proche de I sur thermostat PID) :
         
         - à **augmenter** si on est en-dessous de la consigne quand le chaufffage est stable
         
-        - à **baisser** si la consigne est dépassée"
+        - à **baisser** si la consigne est dépassée quand le chaufffage est stable"
       selector:
         number:
           min: 0.0
