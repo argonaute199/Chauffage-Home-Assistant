@@ -220,7 +220,7 @@ blueprint:
 
   input:
     coeff_c:
-      name: Coefficient C
+      name: Coefficient C - Vitesse de chauffe et oscillations
       description: "Coefficient multiplicateur de la différence entre la consigne et la température intérieure pour le calcul de la puissance
        
         > valeur par défaut conseillée : **`0,6`** (bâti aux normes)
@@ -250,7 +250,7 @@ blueprint:
           max: 1.0
           step: 0.01
     coeff_t:
-      name: Coefficient T
+      name: Coefficient T - Stabilisation trop haute ou trop basse
       description: "Coefficient multiplicateur de la différence entre la consigne et la température extérieure pour le calcul de la puissance
       
         > valeur par défaut conseillée : **`0,01`** (bâti aux normes)
