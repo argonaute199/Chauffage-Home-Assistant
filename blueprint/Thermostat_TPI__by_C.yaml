@@ -235,7 +235,7 @@ blueprint:
         
         **En pratique** (est équivalent à P sur thermostat PID) :
         
-        - à **augmenter** si la chauffe n'est pas assez rapide pour cette pièce
+        - à **augmenter** si la chauffe n'est pas assez rapide pour cette pièce, que la puissance de chauffe se réduit un peu vite vers l'atteinte de la consigne, empêchant de l'obtenir rapidement
              
         - à **baisser** si cela monte trop vite et qu'on dépasse (trop) la consigne quand on l'atteint (overshoot) :
              
