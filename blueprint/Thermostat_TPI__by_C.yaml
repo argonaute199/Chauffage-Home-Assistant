@@ -220,7 +220,7 @@ blueprint:
 
   input:
     coeff_c:
-      name: Coefficient C - Vitesse de chauffe et oscillations
+      name: Coefficient C - Vitesse de chauffe, overshoot et oscillations
       description: "Coefficient multiplicateur de la différence entre la consigne et la température intérieure pour le calcul de la puissance
        
         > valeur par défaut conseillée : **`0,6`** (bâti aux normes)
